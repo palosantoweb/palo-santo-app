@@ -5,7 +5,7 @@ import NavbarComponent from "./Navbar";
 const Container = ({children}) => {
     return (  <>
     <NavbarComponent/>
-    <CarouselComponent/>
+    <CarouselComponent />
     {children}
     <Footer/>
     </>);

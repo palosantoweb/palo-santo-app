@@ -17,3 +17,9 @@
   }
 }
 
+@layer base {
+  html {
+    font-family: "bozon", system-ui, sans-serif;
+  }
+}
+

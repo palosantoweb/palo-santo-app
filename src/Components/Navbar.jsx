@@ -14,15 +14,15 @@ const links=[
         label: "Home"
     },
     {
-        route: "/nosotros",
+        route: "nosotros",
         label:"Nosotros"
     },
     {
-        route: "/servicios",
+        route: "servicios",
         label: "Servicios"
     },
     {
-        route: "/contacto",
+        route: "contacto",
         label: "Contacto"
     }
 ]
