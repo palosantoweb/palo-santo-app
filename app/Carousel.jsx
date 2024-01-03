@@ -1,9 +1,10 @@
+
 "use client";
 import Image from "next/image";
 import { Carousel } from "keep-react";
-import carouselUno from '../../public/carousel-1.jpeg'
-import carouselDos from '../../public/carousel-2.jpeg'
-import carouselTres from '../../public/carousel-3.jpeg'
+import carouselUno from '../public/carousel-1.jpeg'
+import carouselDos from '../public/carousel-2.jpeg'
+import carouselTres from '../public/carousel-3.jpeg'
 
 export const CarouselComponent = () => {
   

@@ -1,4 +1,4 @@
-import { CarouselComponent } from "./CarouselComponent";
+import { CarouselComponent } from "./Carousel";
 import Footer from "./Footer";
 import NavbarComponent from "./Navbar";
 
@@ -12,3 +12,4 @@ const Container = ({children}) => {
 }
  
 export default Container;
+

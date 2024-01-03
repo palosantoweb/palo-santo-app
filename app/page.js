@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import photoOne from '../../public/photo-1.svg';
-import photoTwo from '../../public/photo-2.svg';
+import photoOne from '../public/photo-1.svg';
+import photoTwo from '../public/photo-2.svg';
 import Link from 'next/link';
 import { GoArrowRight } from "react-icons/go";
 

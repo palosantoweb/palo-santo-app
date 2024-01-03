@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import PS from "../../public/ps.svg"
+import PS from "../public/ps.svg"
 
 
 const Footer = () => {
@@ -21,10 +21,6 @@ const Footer = () => {
         {
             route: "contacto",
             label: "Contacto"
-        },
-        {
-            route: "login",
-            label: "Soy administrador"
         }
     ]
 
@@ -40,6 +36,9 @@ const Footer = () => {
             </div>
         })
       }
+      <div className='flex items-center ml-6 mr-6'>
+            <a href="/api/auth/login" className='text-[#CC8942]'>Soy administrador</a>
+            </div>
     </div>
   </div>);
 }
