@@ -1,6 +1,6 @@
 import './globals.css'
 import Container from './components/Container'
-import { UserProvider } from '@auth0/nextjs-auth0/client',
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import localFont from '@next/font/local'
 
 
@@ -70,7 +70,7 @@ const bozon = localFont({
     }
   ],
   variable: '--font-bozon'
-})
+});
 
 
 export default function RootLayout({ children }) {
