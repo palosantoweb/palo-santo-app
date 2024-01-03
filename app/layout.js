@@ -1,5 +1,5 @@
 import './globals.css'
-import Container from './Container'
+import Container from './components/Container'
 import { UserProvider } from '@auth0/nextjs-auth0/client'
 
 export const metadata = {

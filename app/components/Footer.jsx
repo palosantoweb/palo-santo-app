@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import PS from "../public/ps.svg"
+import PS from "../../public/ps.svg"
 
 
 const Footer = () => {
