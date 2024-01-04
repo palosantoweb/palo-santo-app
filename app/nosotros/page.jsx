@@ -2,8 +2,6 @@ import Image from 'next/image';
 import Trekking from '../../public/trekking.svg';
 import Bike from '../../public/bike.svg';
 import Cerro from '../../public/argentina-cerro-catedral-patagonia-mountains.jpg';
-import Link from 'next/link';
-import { GoArrowRight } from 'react-icons/go';
 
 const Nosotros = () => {
     return (
