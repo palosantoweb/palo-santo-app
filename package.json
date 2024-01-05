@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",
-    "google-maps-react": "^2.0.6",
+    "@googlemaps/js-api-loader": "^1.16.2",
     "keep-react": "^1.1.0",
     "lightgallery": "^2.7.2",
     "next": "14.0.4",
@@ -19,6 +19,7 @@
     "react-icons": "^4.12.0"
   },
   "devDependencies": {
+    "@types/google.maps": "^3.54.10",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
