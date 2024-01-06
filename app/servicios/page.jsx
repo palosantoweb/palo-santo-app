@@ -27,7 +27,7 @@ const Servicios = () => {
                 <hr className='border-1 border-gray-300 w-full mr-[40%]' />
             </div>
 
-            <div className='mt-10 md:px-10 md:text-2xl flex items-center justify-between text-justify flex-col text-gray-500 mb-6'>
+            <div className='mt-10 px-10 md:text-2xl flex items-center justify-between text-justify flex-col text-gray-500 mb-6'>
                 <div className='flex-1 mb-28'>
                     <p className='md:mr-6 md:ml-16 italic font-semibold'>
                         Embárcate en una experiencia única de confort y libertad en nuestras acogedoras habitaciones de 1 y 2 dormitorios, equipadas con cocinas a gas y heladeras.
@@ -51,7 +51,7 @@ const Servicios = () => {
                         })}
 
                 </LightGallery>
-                <div className='bg-[#CC8942] px-8 py-4 md:px-28 md:py-20 block'><p className='text-white flex'><Link href="/contacto" className='flex'>¡Quiero contactarme y hacer una reserva!<GoArrowRight className='mt-1' /></Link></p></div>
+                <div className='bg-[#CC8942] px-8 py-4 md:px-28 md:py-20 block'><p className='text-white flex md:text-xl text-sm'><Link href="/contacto" className='flex'>¡Quiero contactarme y hacer una reserva!<GoArrowRight className='mt-1' /></Link></p></div>
 
             </div>
         </div>

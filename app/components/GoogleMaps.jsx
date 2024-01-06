@@ -40,7 +40,7 @@ function Map() {
         initMap();
     },[])
 
-    return(<div style={{ height: '300px', width: "600px" }} ref={mapRef} />)
+    return(<div  style={{ height: '300px', width: "60%" }} ref={mapRef} />)
 
 }
 export default Map;
