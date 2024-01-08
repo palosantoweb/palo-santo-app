@@ -31,7 +31,7 @@ const Nosotros = () => {
     
   <Image src={Trekking}  alt='foto dos' width={500} height={300}/>
   <p className='md:ml-6 mt-3 md:mr-48'>
-  En nuestro complejo, diseñado y construido con amor por dos apasionados arquitectos e ingenieros, encontrarás tu refugio perfecto. Hemos cuidado cada detalle para que tu estancia sea inolvidable, ofreciéndote un equilibrio entre la comodidad moderna y la conexión con la naturaleza.
+  En nuestro complejo, diseñado y construido con amor por apasionados arquitectos e ingenieros, encontrarás tu refugio perfecto. Hemos cuidado cada detalle para que tu estancia sea inolvidable, ofreciéndote un equilibrio entre la comodidad moderna y la conexión con la naturaleza.
  
   </p>
   </div>

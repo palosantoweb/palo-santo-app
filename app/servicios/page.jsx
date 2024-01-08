@@ -26,35 +26,44 @@ const Servicios = () => {
                 <h1 className='md:px-8 py-2 text-2xl text-[#CC8942] md:text-6xl text-center italic font-bold mb-4'>Servicios</h1>
                 <hr className='border-1 border-gray-300 w-full mr-[40%]' />
             </div>
-
             <div className='mt-10 px-10 md:text-2xl flex items-center justify-between text-justify flex-col text-gray-500 mb-6'>
                 <div className='flex-1 mb-28'>
                     <p className='md:mr-6 md:ml-16 italic font-semibold'>
-                        Embárcate en una experiencia única de confort y libertad en nuestras acogedoras habitaciones de 1 y 2 dormitorios, equipadas con cocinas a gas y heladeras.
+                        Embárcate en una experiencia única de confort y libertad en nuestras acogedoras habitaciones de 1 y 2 dormitorios, equipadas con:
                     </p>
+                    <ul className='list-disc ml-16'>
+                        <li>Cocina y horno a gas, heladera/heladera con freezer</li>
+                        <li>Microonda/tostadora/cafetera/pava eléctrica</li>
+                        <li>Calefactor tiro balanceado/detectores de monóxido</li>
+                        <li>Carpintería PVC DVH</li>
+                        <li>Cortinas Blackout</li>
+                        <li>Alarma</li>
+                        <li>Wifi</li>
+                        <li>Smart TV</li>
+                    </ul>
                 </div>
 
-                <LightGallery
-                    speed={500}
-                    download={false}
-                    zoom={false}
-                    plugins={[lgAutoplay, lgFullscreen]}
-                    elementClassNames='wrapper-class'
-                >
+            <LightGallery
+                speed={500}
+                download={false}
+                zoom={false}
+                plugins={[lgAutoplay, lgFullscreen]}
+                elementClassNames='wrapper-class'
+            >
 
-                        {images.map((image, index) => {
-                            return (
+                {images.map((image, index) => {
+                    return (
 
-                                <Image key={index} alt={image.alt} src={image.src} style={{ height: "250px" }} className='w-full object-cover' />
+                        <Image key={index} alt={image.alt} src={image.src} style={{ height: "250px" }} className='w-full object-cover' />
 
-                            )
-                        })}
+                    )
+                })}
 
-                </LightGallery>
-                <div className='bg-[#CC8942] px-8 py-4 md:px-28 md:py-20 block'><p className='text-white flex md:text-xl text-sm'><Link href="/contacto" className='flex'>¡Quiero contactarme y hacer una reserva!<GoArrowRight className='mt-1' /></Link></p></div>
+            </LightGallery>
+            <div className='bg-[#CC8942] px-8 py-4 md:px-28 md:py-20 block'><p className='text-white flex md:text-xl text-sm'><Link href="/contacto" className='flex'>¡Quiero contactarme y hacer una reserva!<GoArrowRight className='mt-1' /></Link></p></div>
 
-            </div>
         </div>
+    </div >
 
     </>);
 }
