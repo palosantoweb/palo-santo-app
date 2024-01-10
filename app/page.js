@@ -1,11 +1,20 @@
+'use server'
 import Image from 'next/image'
 import photoOne from '../public/photo-1.svg';
 import photoTwo from '../public/photo-2.svg';
 import Link from 'next/link';
 import { GoArrowRight } from "react-icons/go";
+import { redirect } from 'next/navigation';
+import { getSession } from '@auth0/nextjs-auth0';
+
+export default async function Home() {
+  const session = await getSession();
+
+    if(session?.user){
+        redirect('/dashboard')
+    }
 
 
-export default function Home() {
   return (
     <main className="w-full flex flex-col items-center justify-between p-6">
       <div className='w-full flex flex-col items-center mb-6'>

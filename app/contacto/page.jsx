@@ -1,7 +1,7 @@
-'use client'
 import { Label, TextInput, Textarea } from "keep-react";
+import Maps from "../components/Maps";
 
-const { default: Map } = require("../components/GoogleMaps")
+
 
 const Contacto = () => {
     return (<> <div className="flex flex-col justify-center items-center">
@@ -16,7 +16,7 @@ const Contacto = () => {
                 </p>
             </div>
         </div>
-        <Map />
+        <Maps />
         <div className='mt-10 md:px-16 px-10 md:text-2xl flex items-center justify-between text-justify flex-col text-gray-500 mb-6'>
             <div className='flex-1 mb-10'>
                 <p className='md:mr-6 md:ml-16 italic font-semibold'>

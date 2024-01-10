@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",
     "@googlemaps/js-api-loader": "^1.16.2",
+    "cookies-next": "^4.1.0",
     "keep-react": "^1.1.0",
     "lightgallery": "^2.7.2",
     "next": "14.0.4",

@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import PS from "../../public/ps.svg"
+import { UserProfile } from "./User-Profile";
+import { getSession } from "@auth0/nextjs-auth0";
 
+const Footer = async() => {
 
-const Footer = () => {
+  const session = await getSession();
+
     
     const links=[
         {
@@ -36,9 +40,14 @@ const Footer = () => {
             </div>
         })
       }
-      <div className='flex items-center ml-6 mr-6'>
-            <a href="/api/auth/login" className='text-[#CC8942]'>Soy administrador</a>
-            </div>
+      {
+        session?.user ?  <UserProfile session={session}/>
+        :
+        <div className='flex items-center ml-6 mr-6'>
+        <a href="/api/auth/login" className='text-[#CC8942]'>Soy administrador</a>
+        </div>
+      }
+
     </div>
   </div>);
 }

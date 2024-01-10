@@ -42,7 +42,7 @@ const links=[
                 <Link href={route}><span className='text-[#CC8942]'>{label}</span></Link>
                 </div>
             ))
-        }            
+        }        
         </div>
         </div>
         {show && (

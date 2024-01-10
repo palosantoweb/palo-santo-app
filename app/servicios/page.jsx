@@ -1,22 +1,9 @@
-'use client';
 import Link from 'next/link';
 import { GoArrowRight } from 'react-icons/go';
-import { images } from '../utils/gallery';
 import './style.css';
-
-import LightGallery from 'lightgallery/react';
-
-// import styles
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-autoplay.css';
-import 'lightgallery/css/lg-fullscreen.css';
+import Gallery from '../components/Gallery';
 
 
-// import plugins if you need
-import lgAutoplay from 'lightgallery/plugins/autoplay'
-import lgFullscreen from 'lightgallery/plugins/fullscreen';
-import Image from 'next/image';
 
 const Servicios = () => {
 
@@ -43,23 +30,7 @@ const Servicios = () => {
                     </ul>
                 </div>
 
-            <LightGallery
-                speed={500}
-                download={false}
-                zoom={false}
-                plugins={[lgAutoplay, lgFullscreen]}
-                elementClassNames='wrapper-class'
-            >
-
-                {images.map((image, index) => {
-                    return (
-
-                        <Image key={index} alt={image.alt} src={image.src} style={{ height: "250px" }} className='w-full object-cover' />
-
-                    )
-                })}
-
-            </LightGallery>
+            <Gallery />
             <div className='bg-[#CC8942] px-8 py-4 md:px-28 md:py-20 block'><p className='text-white flex md:text-xl text-sm'><Link href="/contacto" className='flex'>¡Quiero contactarme y hacer una reserva!<GoArrowRight className='mt-1' /></Link></p></div>
 
         </div>
