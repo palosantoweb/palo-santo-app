@@ -44,7 +44,7 @@ const Footer = async() => {
         session?.user ?  <UserProfile session={session}/>
         :
         <div className='flex items-center ml-6 mr-6'>
-        <a href="/api/auth/login" className='text-[#CC8942]'>Soy administrador</a>
+        <a href="/api/auth/login" className='text-[#CC8942] text-sm whitespace-nowrap'>Soy administrador</a>
         </div>
       }
 

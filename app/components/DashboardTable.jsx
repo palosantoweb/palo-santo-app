@@ -9,6 +9,10 @@ const DashboardTable = ({session}) => {
         return <Spinner />
     }
 
+    if(error){
+        return <h1>Ha ocurrido un error</h1>
+    }
+
     return ( <>{
         data.email === session ? (<div>
 

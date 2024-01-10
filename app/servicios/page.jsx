@@ -13,20 +13,20 @@ const Servicios = () => {
                 <h1 className='md:px-8 py-2 text-2xl text-[#CC8942] md:text-6xl text-center italic font-bold mb-4'>Servicios</h1>
                 <hr className='border-1 border-gray-300 w-full mr-[40%]' />
             </div>
-            <div className='mt-10 px-10 md:text-2xl flex items-center justify-between text-justify flex-col text-gray-500 mb-6'>
-                <div className='flex-1 mb-28'>
-                    <p className='md:mr-6 md:ml-16 italic font-semibold'>
+            <div className='mt-10 md:px-10 md:text-2xl flex items-center justify-center flex-col text-gray-500 mb-6'>
+                <div className='ml-6 md:ml-0 mb-28 mr-3'>
+                    <p className='md:mr-6 md:ml-16 italic font-semibold text-justify'>
                         Embárcate en una experiencia única de confort y libertad en nuestras acogedoras habitaciones de 1 y 2 dormitorios, equipadas con:
                     </p>
-                    <ul className='list-disc ml-16'>
-                        <li>Cocina y horno a gas, heladera/heladera con freezer</li>
-                        <li>Microonda/tostadora/cafetera/pava eléctrica</li>
-                        <li>Calefactor tiro balanceado/detectores de monóxido</li>
-                        <li>Carpintería PVC DVH</li>
-                        <li>Cortinas Blackout</li>
-                        <li>Alarma</li>
-                        <li>Wifi</li>
-                        <li>Smart TV</li>
+                    <ul className='list-disc md:ml-16'>
+                        <li className='mt-6 mb-3'>Cocina y horno a gas, heladera/heladera con freezer</li>
+                        <li className='mb-3'>Microonda/tostadora/cafetera/pava eléctrica</li>
+                        <li className='mb-3'>Calefactor tiro balanceado/detectores de monóxido</li>
+                        <li className='mb-3'>Carpintería PVC DVH</li>
+                        <li className='mb-3'>Cortinas Blackout</li>
+                        <li className='mb-3'>Alarma</li>
+                        <li className='mb-3'>Wifi</li>
+                        <li className='mb-3'>Smart TV</li>
                     </ul>
                 </div>
 

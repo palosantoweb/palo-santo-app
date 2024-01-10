@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { GoArrowRight } from "react-icons/go";
 import { redirect } from 'next/navigation';
 import { getSession } from '@auth0/nextjs-auth0';
+import Banner from './components/Banner';
 
 export default async function Home() {
   const session = await getSession();
@@ -49,6 +50,7 @@ export default async function Home() {
     <hr className='border-1 border-gray-300 w-full mr-[40%] mt-10 mb-28'/>
     <div className='bg-[#CC8942] px-8 py-4 md:px-28 md:py-20 block'><p className='text-white flex'><Link href="/contacto" className='flex'>¡Quiero contactarme y hacer una reserva!<GoArrowRight className='mt-1'/></Link></p></div>
     </div>
+    <Banner/>
     </main>
   )
 }
