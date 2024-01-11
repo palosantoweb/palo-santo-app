@@ -17,7 +17,7 @@ export default async function Home() {
 
 
   return (
-    <main className="w-full flex flex-col items-center justify-between p-6">
+    <main className="min-h-screen w-full flex flex-col items-center justify-between p-6">
       <div className='w-full flex flex-col items-center mb-6'>
       <h1 className='md:px-8  py-2 text-2xl text-[#CC8942] md:text-6xl text-center italic font-bold mb-4'>¡Tu escape perfecto en medio de la belleza natural!</h1>
       <hr className='border-1 border-gray-300 w-full mr-[40%]'/>

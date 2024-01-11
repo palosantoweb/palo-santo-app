@@ -6,7 +6,7 @@ import Cerro from '../../public/argentina-cerro-catedral-patagonia-mountains.jpg
 const Nosotros = () => {
     return (
     <>
-    <div className='w-full flex flex-col items-center mb-6'>
+    <div className='min-h-screen w-full flex flex-col items-center mb-6'>
     <h1 className='md:px-8  py-2 text-2xl text-[#CC8942] md:text-6xl text-center italic font-bold mb-4'>Nuestro rincón de ensueño en la majestuosa Patagonia</h1>
     <hr className='border-1 border-gray-300 w-full mr-[40%]'/>
 
