@@ -29,7 +29,9 @@ const links=[
     return (
     <nav className='w-full bg-gray-900'>
            <div className='w-full bg-gray-900 flex flex-row justify-between'>
-        <Image src={PaloSanto} alt='Palo Santo' />
+            <Link href="/">
+            <Image src={PaloSanto} alt='Palo Santo' />
+            </Link>
         <div className="lg:hidden cursor-pointer mr-5 mt-3">
           <button onClick={() => setShow(prev => !prev)}>
             <Image src={HamburgerIcon} alt='HamburgerIcon' style={{ color: '#CC8942' }}/>

@@ -32,7 +32,7 @@ const Footer = async() => {
     <div className='mt-0 mb-3 flex'>
       <Image src={PS}/>
       </div>
-      <div>
+      <div className="flex flex-col items-end">
       {
         links.map(({label, route})=>{
             return <div key={route} className='flex items-center ml-6 mr-6'>
@@ -43,7 +43,7 @@ const Footer = async() => {
       {
         session?.user ?  <UserProfile session={session}/>
         :
-        <div className='flex items-center ml-6 mr-6'>
+        <div className='flex items-end ml-6 mr-6'>
         <a href="/api/auth/login" className='text-[#CC8942] text-sm whitespace-nowrap'>Soy administrador</a>
         </div>
       }

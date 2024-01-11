@@ -2,7 +2,6 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { CarouselComponent } from "./Carousel";
 import Footer from "./Footer";
 import NavbarComponent from "./Navbar";
-import { getCookie, hasCookie } from "cookies-next";
 
 
 const Container = async({children}) => {
