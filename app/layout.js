@@ -2,6 +2,7 @@ import './globals.css'
 import Container from './components/Container'
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import localFont from "next/font/local"
+import { FormProvider } from './context/FormContext';
 
 
 export const metadata = {
@@ -109,11 +110,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es" className={`${bozon.variable} font-sans`}>
       <UserProvider>
+        <FormProvider>
         <body >
           <Container>
             {children}
           </Container>
         </body>
+        </FormProvider>
       </UserProvider>
     </html>
   )
