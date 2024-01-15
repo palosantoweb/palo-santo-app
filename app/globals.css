@@ -7,19 +7,19 @@ body{
     min-height: 100vh;
 }
 
-.react-datepicker__input-container{
+input{
     border: 1px solid rgb(188, 190, 192);
     height: 40px;
     border-radius: 6px;
+    width: 100%;
 }
 
-.custom-datepicker:focus {
-    border: transparent;
-    
+.custom-datepicker{
+    padding-left: 10px;
 }
 
-.react-datepicker__day.react-datepicker__day--keyboard-selected {
-    background: none;
-    color: white;
+
+.react-datepicker__input-container {
+    color: #CC8942;
   }
   

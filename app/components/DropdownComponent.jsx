@@ -24,9 +24,8 @@ export const DropdownComponent = ({data, loading, error, selectedValue, setSelec
         <Dropdown
           label={selectedValue ? selectedValue : 'Nacionalidad'}
           type="secondary"
-          size="sm"
           dismissOnClick={true}
-          className="border border-gray-400"
+          className="border-none border-gray-400"
         >
           <div className="p-3">
             <TextInput

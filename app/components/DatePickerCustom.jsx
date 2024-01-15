@@ -13,17 +13,15 @@ const DatePickerCustom = ({ formState, setInfoForms }) => {
   };
 
   const selected = () => {
-    let fechaFormateada = null;
-    console.log(fechaFormateada)
+    let formattedDate = null;
 
     if (formState.birthDate) {
 
-      let [dia, mes, anio] = formState.birthDate?.split('-').map(Number);
-      console.log(dia, mes, anio)
-      fechaFormateada = new Date(`${anio}-${mes}-${dia}T00:00:00`)
+      const [year, month, day] = formState.birthDate?.split('-').map(Number);
+      formattedDate = new Date(`${month}-${day}-${year}`)
   
     }
-    return fechaFormateada
+    return formattedDate
 
     }
 
@@ -31,8 +29,8 @@ const DatePickerCustom = ({ formState, setInfoForms }) => {
     <ReactDatePicker
       selected={selected()}
       onChange={(date) => handleDateChange(date)}
-      placeholderText="Día / Mes / Año"
-      dateFormat="dd/MM/yyyy"
+      placeholderText=" Día / Mes / Año "
+      dateFormat="d/MM/yyyy"
       scrollableYearDropdown
       isClearable
       className="custom-datepicker"

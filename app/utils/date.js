@@ -5,6 +5,6 @@ export const formatToDma = (date) => {
     return '';
 }
     const finalDate = new Date(date)
-    var dateString = moment(finalDate).format('DD-MM-YYYY');
+    var dateString = moment(finalDate).format('YYYY-MM-DD');
     return dateString;
   };
