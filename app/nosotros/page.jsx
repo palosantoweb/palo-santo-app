@@ -13,7 +13,6 @@ const Nosotros = () => {
     <div className='mt-10 md:text-2xl px-8 md:px-32 text-justify italic font-semibold text-gray-400'>
         <p>Somos una familia mendocina que, cautivada por la belleza de esta región, decidió crear un espacio único que ahora queremos compartir contigo.</p>
     </div>
-    </div>
     <div className=' px-10  md:text-2xl flex items-center justify-between text-justify flex-col md:flex-row text-gray-500 mb-6'>
     <div className='flex-1 '>
       <p className='md:mr-6 md:ml-16 mb-6'>
@@ -60,6 +59,7 @@ const Nosotros = () => {
 
   </div>
   <hr className='border-1 border-gray-300 w-full mr-[40%] mt-10 mb-28'/>
+  </div>
   </div>
   </div>
   </>
