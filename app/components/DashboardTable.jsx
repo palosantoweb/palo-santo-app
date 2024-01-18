@@ -18,44 +18,58 @@ const DashboardTable = ({ session }) => {
     return (
         <>
             {userData.email === session ? (
-                <div>
-                    <Table>
-                        <Table.Head>
-                            <Table.HeadCell>Id</Table.HeadCell>
-                            <Table.HeadCell>Mail</Table.HeadCell>
-                            <Table.HeadCell>Nombre</Table.HeadCell>
-                            <Table.HeadCell>Nacionalidad</Table.HeadCell>
-                            <Table.HeadCell>Teléfono</Table.HeadCell>
-                            <Table.HeadCell>Fecha de Nacimiento</Table.HeadCell>
-                        </Table.Head>
-                        <Table.Body>
+                <div className="overflow-x-auto my-auto">
+                    <div></div>
+                    <table className="text-sm rounded flex md:table">
+                        <thead className="md:table-header-group bg-[#CC8942] text-white font-semibold">
+                        <tr className="grid grid-cols-1 md:table-row">
+                            <th className="md:table-cell p-3 text-left text-sm">Id</th>
+                            <th className="md:table-cell p-3 text-left text-sm">Mail</th>
+                            <th className="md:table-cell p-3 text-left text-sm">Nombre</th>
+                            <th className="md:table-cell p-3 text-left text-sm">Nacionalidad</th>
+                            <th className="md:table-cell p-3 text-left text-sm">Teléfono</th>
+                            <th className="md:table-cell p-3 text-left text-sm">Fecha de Nacimiento</th>
+                            <th className="md:table-cell p-3 text-left text-sm"> </th>
+                        </tr>
+                        </thead>
+
+                        <tbody className="">
                             {loadingCustomers ? 
-                            <Table.Row>
-                                <Table.Cell>
+                            <tr className="">
+                                <td>
                                 <Spinner /> 
-                                </Table.Cell>
-                            </Table.Row>
+                                </td>
+                            </tr>
                          :
                                 dataCustomers?.length > 0 ?
                                     dataCustomers.map((client, index) => (
-                                        console.log(client) /*<Table.Cell key={index}>{client}</Table.Cell>*/
+                                    <tr key={index} className="grid grid-cols-1 md:table-row">
+                                      <td className="md:table-cell border-grey-light border hover:bg-gray-100 p-3">{client.id}</td>
+                                      <td className="md:table-cell border-grey-light border hover:bg-gray-100 p-3 whitespace-nowrap">{client.email}</td>
+                                      <td className="md:table-cell border-grey-light border hover:bg-gray-100 p-3 whitespace-nowrap">{client.name}</td>
+                                      <td className="md:table-cell border-grey-light border hover:bg-gray-100 p-3 whitespace-nowrap">{client.nationality}</td>
+                                      <td className="md:table-cell border-grey-light border hover:bg-gray-100 p-3 whitespace-nowrap">{client.phoneNumber}</td>
+                                      <td className="md:table-cell border-grey-light border hover:bg-gray-100 p-3 whitespace-nowrap">{new Date(client.birthDate).toLocaleDateString()}</td>
+                                      <td className="md:table-cell border-grey-light border hover:bg-gray-100 p-3 whitespace-nowrap text-[#CC8942]"><Link href="dashboard/modify/[id]" as={`dashboard/modify/${client.id}`}>Editar</Link></td>
+                                      </tr>
+
                                     )) :
-                                    <Table.Row>
-                                        <Table.Cell>
+                                    <tr>
+                                        <td>
                                             <p>Aún no hay datos disponibles... <Link href="dashboard/create" className="text-[#CC8942]"> Ingresar un nuevo cliente</Link></p>
-                                        </Table.Cell>
-                                    </Table.Row>
+                                        </td>
+                                    </tr>
 
                             }
                             {errorCustomers ?
-                                <Table.Row>
-                                    <Table.Cell>
+                                <tr>
+                                    <td>
                                         <p> Ha ocurrido un error...</p>
-                                    </Table.Cell>
-                                </Table.Row>
+                                    </td>
+                                </tr>
                                 : <></>}
-                        </Table.Body>
-                    </Table>
+                        </tbody>
+                    </table>
                 </div>
             ) : (
                 <div>No tenés permitido el ingreso a esta sección! </div>

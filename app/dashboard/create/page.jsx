@@ -15,7 +15,6 @@ const CreateCustomer = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const isFormNotEmpty = Object.values(formState).some((value) => value !== '' || value !== null);
-        console.log(isFormNotEmpty)
 
         if(isFormNotEmpty){
             const sendData = async () => {
@@ -23,7 +22,7 @@ const CreateCustomer = () => {
                 headers: {
                     'Content-Type': 'application/json', 
                   },
-                  body: JSON.stringify({ client: formState })})
+                  body: JSON.stringify(formState)})
                 console.log(response)
 
             }
