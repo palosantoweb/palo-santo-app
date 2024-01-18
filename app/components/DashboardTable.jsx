@@ -2,6 +2,8 @@
 import { Spinner, Table } from "keep-react";
 import useFetch from "../hooks/useFetch";
 import Link from "next/link";
+import Image from "next/image";
+import search from '../../public/search.svg';
 
 const DashboardTable = ({ session }) => {
     const { data: userData, loading: userLoading, error: userError } = useFetch(`${process.env.NEXT_PUBLIC_BASE_URL}user/login/${session}`, { method: 'GET' });
@@ -18,8 +20,17 @@ const DashboardTable = ({ session }) => {
     return (
         <>
             {userData.email === session ? (
-                <div className="overflow-x-auto my-auto">
-                    <div></div>
+                <div>
+                    <div className="flex justify-between mb-6">
+                    <div>
+                    <button className="border-2 border-[#CC8942] p-2 rounded">Exportar Excel</button>
+                    </div>
+                    <div className="flex">
+                        <Image src={search} width={32}/>
+                    <input placeholder=" Búsqueda por cliente" className="w-full"/>
+
+                    </div>
+                    </div>
                     <table className="text-sm rounded flex md:table">
                         <thead className="md:table-header-group bg-[#CC8942] text-white font-semibold">
                         <tr className="grid grid-cols-1 md:table-row">
