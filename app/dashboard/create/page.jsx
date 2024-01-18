@@ -6,7 +6,6 @@ import useFetch from "@/app/hooks/useFetch";
 import {Label, TextInput } from "keep-react";
 import { useState } from "react";
 
-
 const CreateCustomer = () => {
     const { data: dataCountry, loading: loadingCountry, error: errorCountry } = useFetch(`https://restcountries.com/v3.1/all`, { method: 'GET' })
     const [errorSubmited, setErrorSubmited] = useState(false)
@@ -37,7 +36,32 @@ const CreateCustomer = () => {
 
     }
 
+    function handleImageUpload(e){
+        const files = []
+        if(e && e.target && e.target.files){
+            for(const file of e.target.files){
+                // Instancio el lector de archivos
+                var reader = new FileReader();
+                // Dejo el lector leyendo el archivo seleccionado
+                reader.readAsDataURL(file)
+                reader.addEventListener("load", ()=>{
+                    files.push({
+                        base64:reader.result,
+                        name:file.name
+                    })
+                    debugger
+                })
+            }
+        }
+    }
+
     return (<>
+        {/* BORRAR */}
+        <div>
+            <span>Input de ejemplo para subida de imagenes</span>
+            <input type="file" onChange={e => handleImageUpload(e)}></input>
+        </div>    
+        {/* BORRAR */}
         <div className="h-screen flex flex-col items-center justify-center mt-6">
             <div className="flex flex-col items-center justify-between w-full mb-10 mx-10" >
                 <h1 className="md:px-8  py-2 text-[#CC8942] text-xl md:text-4xl text-center italic font-bold mb-4"> Agregar Nuevo Cliente</h1>
