@@ -1,5 +1,5 @@
 'use client'
-import { images } from '../utils/gallery';
+import { images } from '../../utils/gallery';
 
 import LightGallery from 'lightgallery/react';
 

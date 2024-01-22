@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import PS from "../../public/ps.svg"
+import PS from "../../../public/ps.svg"
 import { UserProfile } from "./User-Profile";
 import { getSession } from "@auth0/nextjs-auth0";
 
@@ -29,7 +29,7 @@ const Footer = async() => {
     ]
 
     return ( 
-    <div className="flex items-center justify-between bg-gray-900 border-t-[1.5px]  border-gray-500 text-white relative bottom-0">
+    <footer className="flex items-center justify-between bg-gray-900 border-t-[1.5px]  border-gray-500 text-white relative bottom-0">
     <div className='mt-0 mb-3 flex'>
       <Image src={PS}/>
       </div>
@@ -50,7 +50,7 @@ const Footer = async() => {
       }
 
     </div>
-  </div>
+  </footer>
 );
 }
  

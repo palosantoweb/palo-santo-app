@@ -10,7 +10,6 @@ export const initialStateForm = {
   const formsReducer = (state = initialStateForm, action) => {
     switch (action.type) {
       case 'SET_FIELD':
-        console.log(action.payload)
         return { ...state, [action.payload.field]: action.payload.value };     
       case 'CLEAN_FIELDS':
         return initialStateForm;       

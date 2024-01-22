@@ -1,5 +1,5 @@
 import './globals.css'
-import Container from './components/Container'
+import Container from './ui/components/Container'
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import localFont from "next/font/local"
 import { FormProvider } from './context/FormContext';

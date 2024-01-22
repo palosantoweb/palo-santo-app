@@ -1,7 +1,7 @@
 'use client'
 
 import ReactDatePicker from "react-datepicker";
-import { formatToDma } from "../utils/date";
+import { formatToDma } from "../../utils/date";
 import moment from "moment";
 
 
@@ -17,7 +17,6 @@ const DatePickerCustom = ({ formState, setInfoForms }) => {
 
     if (formState.birthDate !== '') {
       const[date, time] = formState.birthDate.split('T')
-      console.log(date)
       const [year, month, day] = date.split('-').map(Number);
       formattedDate = new Date(`${month}-${day}-${year}`)
   

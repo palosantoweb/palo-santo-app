@@ -1,5 +1,5 @@
 'use client'
-const { default: Map } = require("../components/GoogleMaps")
+const { default: Map } = require("./GoogleMaps")
 
 const Maps = () => {
     return ( <><Map /></> );

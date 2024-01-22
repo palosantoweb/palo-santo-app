@@ -2,7 +2,7 @@
 import { Dropdown,Spinner,TextInput } from "keep-react";
 import { useState } from "react";
 
-export const DropdownComponent = ({data, loading, error, selectedValue, setSelectedValue, setInfoForms}) => {
+export const DropdownComponent = ({data, selectedValue, setSelectedValue, setInfoForms}) => {
     const [searchTerm, setSearchTerm] = useState('');
 
 
@@ -36,8 +36,6 @@ export const DropdownComponent = ({data, loading, error, selectedValue, setSelec
               handleOnChange={(e) => handleChange(e)}
             />
           </div>
-          {error && <Dropdown.Item> Ha ocurrido un error</Dropdown.Item>}
-          {loading && <Dropdown.Item> <Spinner /></Dropdown.Item>}
           {filteredData.length > 0 && (
             <div className="max-h-60 overflow-y-auto">
               {filteredData.map(({ name }, index) => (
