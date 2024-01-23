@@ -2,7 +2,7 @@
 import { Dropdown,Spinner,TextInput } from "keep-react";
 import { useState } from "react";
 
-export const DropdownComponent = ({data, selectedValue, setSelectedValue, setInfoForms}) => {
+export const DropdownComponent = ({data, selectedValue, setSelectedValue,formState, setInfoForms}) => {
     const [searchTerm, setSearchTerm] = useState('');
 
 
@@ -22,7 +22,7 @@ export const DropdownComponent = ({data, selectedValue, setSelectedValue, setInf
     return (
         <div className="relative w-full">
         <Dropdown
-          label={selectedValue ? selectedValue : 'Nacionalidad'}
+          label={formState.nationality !== null  ? formState.nationality : selectedValue ? selectedValue : 'Nacionalidad'}
           type="secondary"
           dismissOnClick={true}
           className="border-none border-gray-400"

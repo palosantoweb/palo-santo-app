@@ -3,7 +3,10 @@ import ContactForm from "../ui/components/ContactForm";
 
 
 
-const Contacto = () => {
+const Contacto = async() => {
+    const response = await fetch(`https://restcountries.com/v3.1/all`, { method: 'GET' })
+    const responseDataCountries = await response.json()
+
     return (<> <div className="min-h-screen flex flex-col justify-center items-center">
     <div className='w-full flex flex-col items-center mb-6'>
         <h1 className='md:px-8 py-2 text-2xl text-[#CC8942] md:text-6xl text-center italic font-bold mb-4'>
@@ -26,7 +29,7 @@ const Contacto = () => {
         </div>
     </div>
 </div>
-    <ContactForm />
+    <ContactForm responseDataCountries={responseDataCountries}/>
     </>);
 }
 

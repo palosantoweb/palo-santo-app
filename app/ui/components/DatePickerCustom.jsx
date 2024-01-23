@@ -34,6 +34,7 @@ const DatePickerCustom = ({ formState, setInfoForms }) => {
       scrollableYearDropdown
       isClearable
       className="custom-datepicker"
+      required
     />);
 
 }

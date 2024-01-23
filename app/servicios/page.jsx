@@ -7,6 +7,8 @@ import Gallery from '../ui/components/Gallery';
 
 const Servicios = () => {
 
+    
+
     return (<>
         <div className='min-h-screen flex flex-col'>
             <div className='w-full flex flex-col items-center mb-6'>

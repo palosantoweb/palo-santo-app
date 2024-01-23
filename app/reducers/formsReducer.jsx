@@ -5,6 +5,7 @@ export const initialStateForm = {
     nationality: null,
     phoneNumber: '',
     birthDate: '',
+    consultation: ''
   };
   
   const formsReducer = (state = initialStateForm, action) => {

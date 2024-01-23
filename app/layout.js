@@ -107,11 +107,12 @@ const bozon = localFont({
 
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="es" className={`${bozon.variable} font-sans`}>
       <UserProvider>
         <FormProvider>
-        <body >
+        <body suppressHydrationWarning={true}>
           <Container>
             {children}
           </Container>

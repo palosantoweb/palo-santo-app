@@ -1,33 +1,126 @@
 'use client'
 
-const UploadImagesComponent = () => {
+import { fetcher } from "@/app/utils/fetcher";
+import Image from "next/image";
+import { useState } from "react";
 
+const UploadImagesComponent = () => {
+    const [imageFiles, setImageFiles] = useState([]);
+    const [selectedOption, setSelectedOption] = useState("galeria");
+
+    const handleImageUpload = async(e) => {
+        const newFiles = [...imageFiles];
+
+
+        try {
+            if (e.target.files) {
+                const promises = Array.from(e.target.files).map(async (file) => {
+                    return new Promise((resolve) => {
+                        let reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = () => {
+                            newFiles.push({
+                                base64: reader.result,
+                                name: file.name
+                            });
+                            resolve();
+                        };
+                    });
+                });
     
-    function handleImageUpload(e){
-        const files = []
-        if(e && e.target && e.target.files){
-            for(const file of e.target.files){
-                // Instancio el lector de archivos
-                var reader = new FileReader();
-                // Dejo el lector leyendo el archivo seleccionado
-                reader.readAsDataURL(file)
-                reader.addEventListener("load", ()=>{
-                    files.push({
-                        base64:reader.result,
-                        name:file.name
-                    })
-                    debugger
-                })
+                await Promise.all(promises);
+    
+                setImageFiles(newFiles);
+    
             }
+        } catch (error) {
+            console.error(error);
         }
+    };
+
+    const handleRemoveImage = (name) => {
+        const newFiles = imageFiles.filter((file) => file.name !== name);
+        setImageFiles(newFiles);
+    };
+
+    const uploadImages = () =>{
+
+        const sendData = async () => {
+            const response = await fetcher(`${selectedOption==='gallery' ? 'gallery' : 'carrousel'}/upload`, {
+                method: 'POST',
+                mode: 'cors', 
+                headers: {
+                    'Content-Type': 'application/json', // Corrige las comillas aquí
+                },
+                body: JSON.stringify(imageFiles)
+            });
+            if(response){
+                setImageFiles([])
+            }
+
+        };
+        sendData()
     }
 
-
     
-    return ( <> <div>
-        <span>Input de ejemplo para subida de imagenes</span>
-        <input type="file" onChange={e => handleImageUpload(e)}></input>
-    </div> </> );
-}
- 
+
+    return (
+        <div className="container mx-auto my-8 flex flex-col items-center justify-center">
+            <div className="flex flex-col justify-between items-center mb-4">
+                <span className="text-4xl font-semibold mb-6 text-[#CC8942]">
+                    Subir imágenes
+                </span>
+                <div className="flex items-center justify-center">
+                    <label className="mr-2" htmlFor="galeria">Galería</label>
+                    <input className="mr-10" type="radio" id="galeria" name="radiobutton"  checked={selectedOption === "gallery"} onChange={()=> setSelectedOption('gallery')}/>
+                    <label className="mr-2" htmlFor="carrousel">Carrousel</label>
+                    <input type="radio" id="carrousel"  checked={selectedOption === "carrousel"} name="radiobutton" onChange={()=> setSelectedOption('carrousel')}/>
+                </div>
+                <div className="relative flex flex-col items-center justify-center">
+                    <input
+                        id="id-16"
+                        type="file"
+                        onChange={(e) => handleImageUpload(e)}
+                        multiple
+                        className="hidden"
+                    />
+                    <label
+                        htmlFor="id-16"
+                        className="bg-[#CC8942] py-2 px-6 rounded-md cursor-pointer text-white hover:bg-[#AA713D] transition duration-300 ease-in-out"
+                    >
+                        Seleccionar Imágenes
+                    </label>
+                    <label>
+                        {imageFiles.length} imagenes seleccionadas
+                    </label>
+                </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {imageFiles.map((image, index) => (
+                    <div key={index} className="overflow-hidden rounded-lg shadow-md">
+                        <Image
+                            src={image.base64}
+                            alt={image.name}
+                            width={250}
+                            height={250}
+                            style={{ objectFit: "cover", width: "250px", height: "250px" }}
+                        />
+                        <button
+                            onClick={() => handleRemoveImage(image.name)}
+                            className="w-full py-2 bg-red-500 text-white font-semibold rounded-b-md"
+                        >
+                            Eliminar imagen
+                        </button>
+                    </div>
+                ))}
+            </div>
+            <button className="bg-[#CC8942] py-2 px-6 rounded-md cursor-pointer text-white hover:bg-[#AA713D] transition duration-300 ease-in-out mt-10" onClick={()=>uploadImages()}>
+                    Subir Imagenes
+                </button>
+        </div>
+    );
+};
+
+
+
 export default UploadImagesComponent;

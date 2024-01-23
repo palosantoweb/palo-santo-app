@@ -30,7 +30,7 @@ const handleSearch = useDebouncedCallback((e) => {
 
     return (  
         <div className="flex items-center">
-        <Image src={search} width={32} />
+        <Image src={search} width={32} alt="search" />
         <input placeholder=" Búsqueda por cliente" className="w-full" onChange={handleSearch} defaultValue={searchParams.get('search')?.toString()} />
 
     </div>

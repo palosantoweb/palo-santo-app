@@ -1,13 +1,13 @@
 import UploadClient from "@/app/ui/components/UploadClient";
-import { fetcher } from "@/app/utils/fetcher";
 
 
 const CreateCustomer = async() => {
-    const fetchData = await fetch(`https://restcountries.com/v3.1/all`, { method: 'GET' })
+    const response = await fetch(`https://restcountries.com/v3.1/all`, { method: 'GET' })
+    const responseDataCountries = await response.json();
 
     return (<>
-        <div className="h-screen flex flex-col items-center justify-center mt-6">
-            <UploadClient fetchData={fetchData}/>
+        <div className="min-h-screen flex flex-col items-center justify-center">
+            <UploadClient responseDataCountries={responseDataCountries} mode="create"/>
         </div>
 
     </>);
