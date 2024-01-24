@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CustomDropdown from "./DropdownComponent";
 import DatePickerCustom from "./DatePickerCustom";
 
-const CommonForm = ({ formState, cleanFields = () => { }, handleSubmit = () => { }, setInfoForms = () => { }, responseDataCountries, mode = 'client', id, nameInputRef }) => {
+const CommonForm = ({ formState, cleanFields = () => { }, handleSubmit = () => { }, setInfoForms = () => { }, responseDataCountries, mode = 'client', id}) => {
     const [selectedValue, setSelectedValue] = useState(null);
 
     return (
@@ -19,7 +19,7 @@ const CommonForm = ({ formState, cleanFields = () => { }, handleSubmit = () => {
                                 disabled
                                 id="#id-10"
                                 value={id}
-                                ref={nameInputRef} />
+                               />
                         </> :
                         ""
                 }

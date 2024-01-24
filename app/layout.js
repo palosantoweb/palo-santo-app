@@ -5,6 +5,7 @@ import localFont from "next/font/local"
 import { FormProvider } from './context/FormContext';
 import { ToastContainer } from 'react-toastify';
 import { ImagesProvider } from './context/ImagesContext';
+import { ClientProvider } from './context/ClientContext';
 
 
 export const metadata = {
@@ -109,29 +110,31 @@ const bozon = localFont({
 
 
 export default function RootLayout({ children }) {
-  
+
   return (
     <html lang="es" className={`${bozon.variable} font-sans`}>
       <UserProvider>
         <FormProvider>
           <ImagesProvider>
-        <body suppressHydrationWarning={true}>
-          <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light" />
-          <Container>
-            {children}
-          </Container>
-        </body>
-        </ImagesProvider>
+            <ClientProvider>
+              <body suppressHydrationWarning={true}>
+                <ToastContainer
+                  position="top-center"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light" />
+                <Container>
+                  {children}
+                </Container>
+              </body>
+            </ClientProvider>
+          </ImagesProvider>
         </FormProvider>
       </UserProvider>
     </html>

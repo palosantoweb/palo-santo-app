@@ -1,12 +1,26 @@
+'use client'
 import Link from "next/link";
 import { fetchedClients } from "@/app/utils/fetcher";
+import { useClient } from "@/app/context/ClientContext";
+import { useEffect } from "react";
 
 
 
-const DashboardTable = async({ session, userData, clientData }) => {
+const DashboardTable = ({ session, userData, clientData }) => {
+    console.log(clientData)
+    const {clients, updateClients, setClients} = useClient([])
+    
+    useEffect(()=>{
+
+        if(clients.length > 0 && clients.length > clientData){
+            setClients(clients)        
+        }else{
+            setClients(clientData.content)
+        }
+    },[])
 
    
-
+console.log(clients)
 
     return (
         <>
@@ -26,8 +40,8 @@ const DashboardTable = async({ session, userData, clientData }) => {
                         </thead>
 
                         <tbody className="">
-                            {clientData?.content.length > 0 ?
-                                clientData.content.map((client, index) => (
+                            {clients?.length > 0 ?
+                                clients.map((client, index) => (
                                     <tr key={index} className="table-row">
                                         <td className="table-cell border-grey-light border hover:bg-gray-100 p-3">{client.id}</td>
                                         <td className="table-cell border-grey-light border hover:bg-gray-100 p-3 whitespace-nowrap">{client.name}</td>

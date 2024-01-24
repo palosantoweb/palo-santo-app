@@ -1,16 +1,18 @@
 'use client'
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForms } from "../../context/FormContext";
 import Link from "next/link";
 import { fetcher } from "@/app/utils/fetcher";
 import CommonForm from "./commonForm";
 import { toast } from "react-toastify";
+import { useClient } from "@/app/context/ClientContext";
 
 const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
-    const nameInputRef = useRef(null);
     const [errorSubmited, setErrorSubmited] = useState(false)
     const { formState, setInfoForms, cleanFields } = useForms();
     const [responseData, setResponseData] = useState("")
+    const {updateClients} = useClient([])
+
 
 
     useEffect(() => {
@@ -39,9 +41,12 @@ const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
                 })
                 if (response) {
                     setResponseData(response);
+                    toast.success('El cliente ha sido modificado correctamente')
+                    updateClients(formState)
                 }
             }
             sendData();
+            updateClients(formState)
         } else {
 
             if (isFormNotEmpty) {
@@ -56,6 +61,7 @@ const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
                     if (response) {
                         setResponseData(response);
                         toast.success('El cliente ha sido agregado correctamente')
+                        updateClients(formState)
                     }
                 }
                 sendData();
@@ -74,7 +80,7 @@ const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
 
     return (<div className="flex flex-col items-center justify-between w-full mb-10 mx-10" >
         <h1 className="md:px-8 py-2 text-[#CC8942] text-xl md:text-4xl text-center italic font-bold mb-4"> {`${mode === 'create' ? 'Agregar Nuevo Cliente' : 'Modificar Cliente'}`}</h1>
-        <CommonForm handleSubmit={handleSubmit} formState={formState} setInfoForms={setInfoForms} cleanFields={cleanFields} responseDataCountries={responseDataCountries} mode={mode} id={id} nameInputRef={nameInputRef}/>
+        <CommonForm handleSubmit={handleSubmit} formState={formState} setInfoForms={setInfoForms} cleanFields={cleanFields} responseDataCountries={responseDataCountries} mode={mode} id={id}/>
         {
             errorSubmited && <span> Por favor rellenar los campos</span>
         }
@@ -82,19 +88,6 @@ const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
             responseData !== '' && (
                 <div className="text-gray-500">
                     {`El cliente ha sido ${mode==='modify'?`modificado` : `creado`} correctamente. `}
-                    {mode !== 'modify' && (
-                        <button
-                            className="text-[#CC8942]"
-                            type="reset"
-                            onClick={() => {
-                                setResponseData("");
-                                nameInputRef.current.focus();
-                                cleanFields();
-                            }}
-                        >
-                            Cargar otro cliente
-                        </button>
-                    )}
                     Volver al <Link className="text-[#CC8942]" href="/dashboard">Dashboard</Link>
                 </div>
             )
