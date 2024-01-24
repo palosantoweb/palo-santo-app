@@ -1,14 +1,16 @@
 'use client'
 
+import { useImages } from "@/app/context/ImagesContext";
 import { fetcher } from "@/app/utils/fetcher";
 import Image from "next/image";
 import { useState } from "react";
 
 const UploadImagesComponent = () => {
     const [imageFiles, setImageFiles] = useState([]);
-    const [selectedOption, setSelectedOption] = useState("galeria");
+    const [selectedOption, setSelectedOption] = useState("");
+    const { updateImagesCarrousel, removeImageCarrousel, updateImagesGallery, removeImageGallery } = useImages();
 
-    const handleImageUpload = async(e) => {
+    const handleImageUpload = async (e) => {
         const newFiles = [...imageFiles];
 
 
@@ -27,11 +29,10 @@ const UploadImagesComponent = () => {
                         };
                     });
                 });
-    
+
                 await Promise.all(promises);
-    
+
                 setImageFiles(newFiles);
-    
             }
         } catch (error) {
             console.error(error);
@@ -41,28 +42,38 @@ const UploadImagesComponent = () => {
     const handleRemoveImage = (name) => {
         const newFiles = imageFiles.filter((file) => file.name !== name);
         setImageFiles(newFiles);
+        if(selectedOption === 'gallery'){
+            removeImageGallery(name)
+        }else{
+            removeImageCarrousel(name)
+        }
     };
 
-    const uploadImages = () =>{
+    const uploadImages = () => {
 
+        if(selectedOption !== ''){
         const sendData = async () => {
-            const response = await fetcher(`${selectedOption==='gallery' ? 'gallery' : 'carrousel'}/upload`, {
+            const response = await fetcher(`${selectedOption === 'gallery' ? 'gallery' : 'carrousel'}/upload`, {
                 method: 'POST',
-                mode: 'cors', 
+                mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json', // Corrige las comillas aquí
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(imageFiles)
             });
-            if(response){
+            if (response && selectedOption === 'gallery') {
+                updateImagesGallery(imageFiles)
                 setImageFiles([])
+            }else{
+                updateImagesCarrousel(imageFiles)
             }
 
         };
         sendData()
     }
+       
+    }
 
-    
 
     return (
         <div className="container mx-auto my-8 flex flex-col items-center justify-center">
@@ -70,11 +81,14 @@ const UploadImagesComponent = () => {
                 <span className="text-4xl font-semibold mb-6 text-[#CC8942]">
                     Subir imágenes
                 </span>
-                <div className="flex items-center justify-center">
+                <div className="flex flex-col items-center justify-center">
+                {selectedOption === '' && <h1>Seleccione donde desea subir las imagenes:</h1>}
+                    <div className="flex flex-row">
                     <label className="mr-2" htmlFor="galeria">Galería</label>
-                    <input className="mr-10" type="radio" id="galeria" name="radiobutton"  checked={selectedOption === "gallery"} onChange={()=> setSelectedOption('gallery')}/>
+                    <input className="mr-10" type="radio" id="galeria" name="radiobutton" checked={selectedOption === "gallery"} onChange={() => setSelectedOption('gallery')} />
                     <label className="mr-2" htmlFor="carrousel">Carrousel</label>
-                    <input type="radio" id="carrousel"  checked={selectedOption === "carrousel"} name="radiobutton" onChange={()=> setSelectedOption('carrousel')}/>
+                    <input type="radio" id="carrousel" checked={selectedOption === "carrousel"} name="radiobutton" onChange={() => setSelectedOption('carrousel')} />
+                    </div>
                 </div>
                 <div className="relative flex flex-col items-center justify-center">
                     <input
@@ -114,9 +128,9 @@ const UploadImagesComponent = () => {
                     </div>
                 ))}
             </div>
-            <button className="bg-[#CC8942] py-2 px-6 rounded-md cursor-pointer text-white hover:bg-[#AA713D] transition duration-300 ease-in-out mt-10" onClick={()=>uploadImages()}>
-                    Subir Imagenes
-                </button>
+            <button className="bg-[#CC8942] py-2 px-6 rounded-md cursor-pointer text-white hover:bg-[#AA713D] transition duration-300 ease-in-out mt-10" onClick={() => uploadImages()}>
+                Subir Imagenes
+            </button>
         </div>
     );
 };

@@ -4,18 +4,21 @@ import { fixBase64Format } from "@/app/utils/CorrectBase64";
 import Image from "next/image";
 import { fetcher } from "@/app/utils/fetcher";
 import { useEffect, useState } from "react";
+import { useImages } from "@/app/context/ImagesContext";
 
 export const CarouselComponent = ({ session }) => {
-  const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true)
+  const {imageCarrousel, updateImagesCarrousel, removeImageCarrousel} = useImages();
+
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const carouselImages = await fetcher(`carrousel`, { cache: "no-store" });
-        const carouselImagesFormatted = fixBase64Format(carouselImages)
+        const carouselImages = await fetcher(`carrousel`);
+        const carouselImagesFormatted = await carouselImages.length > 0 ? fixBase64Format(carouselImages) : []
+        updateImagesCarrousel(carouselImagesFormatted)
         setLoading(false)
-        setImages(carouselImagesFormatted);
       } catch (error) {
         console.error("Error fetching carousel images:", error);
         setLoading(false)
@@ -23,34 +26,35 @@ export const CarouselComponent = ({ session }) => {
     };
 
     fetchData();
-  }, [images]); 
+  }, []);
 
   const handleRemoveImage = async (name) => {
     try {
-       await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}carrousel/${name}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}carrousel/${name}`, {
         method: 'DELETE'
       });
-      setImages([]);
+      removeImageCarrousel(name)
     } catch (error) {
       console.error("Error deleting image:", error);
     }
   };
 
-  if(loading) return <Spinner />
+  if (loading) return <Spinner />
 
   return (
     <div className="mb-12">
       {!session ? (
         <Carousel slideInterval={5000} showControls={true} indicators={true}>
-          {images.length > 0 && images.map(({ name, base64 }) => (
+          {imageCarrousel.length > 0 ? imageCarrousel.map(({ name, base64 }) => (
             <div key={name}>
               <Image src={base64} alt={name} layout="fill" style={{ objectFit: "cover" }} />
             </div>
-          ))}
+          )) :
+            <h1>Estamos trabajando para mejorar el sitio, esto estará visible más tarde</h1>}
         </Carousel>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
-          {images.length > 0 && images.map(({ name, base64 }) => (
+          {imageCarrousel.length > 0 && imageCarrousel.map(({ name, base64 }) => (
             <div key={name} className="overflow-hidden rounded-lg shadow-md">
               <Image
                 src={base64}
@@ -66,9 +70,15 @@ export const CarouselComponent = ({ session }) => {
                 Eliminar imagen
               </button>
             </div>
-          ))}
+          ))
+          }
         </div>
+      
       )}
+      {
+            !session && imageCarrousel.length === 0 && <h1 className="text-center">No hay imagenes cargadas en el carrousel</h1>
+
+      }
     </div>
   );
 };
