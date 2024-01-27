@@ -7,10 +7,10 @@ module.exports = {
 
   deploy: {
     production: {
-      user: 'ubuntu',
+      user: 'root',
       host: '149.50.136.81',
       ref: 'origin/main',
-      repo: 'git@github.com:palosantoweb/palo-santo.git',
+      repo: 'https://palosanto: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@github.com/palosantoweb/palo-santo',
       path: '/home/ubuntu',
       'pre-deploy-local': '',
       'post-deploy':
