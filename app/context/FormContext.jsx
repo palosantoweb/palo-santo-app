@@ -25,7 +25,7 @@ const FormProvider = ({ children }) => {
 const useForms = () => {
   const context = useContext(FormContext);
   if (!context) {
-    throw new Error('useClient must be used within a ClientProvider');
+    throw new Error('useForms must be used within a FormProvider');
   }
   return context;
 };

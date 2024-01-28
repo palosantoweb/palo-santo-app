@@ -42,7 +42,7 @@ export const CarouselComponent = ({ session }) => {
   if (loading) return <Spinner />
 
   return (
-    <div className="mb-12">
+    <div className="mb-6 md:mb-12">
       {!session ? (
         <Carousel slideInterval={5000} showControls={true} indicators={true}>
           {imageCarrousel.length > 0 ? imageCarrousel.map(({ name, base64 }) => (
@@ -76,7 +76,7 @@ export const CarouselComponent = ({ session }) => {
       
       )}
       {
-            !session && imageCarrousel.length === 0 && <h1 className="text-center">No hay imagenes cargadas en el carrousel</h1>
+            session && imageCarrousel.length === 0 && <h1 className="text-center">No hay imagenes cargadas en el carrousel</h1>
 
       }
     </div>

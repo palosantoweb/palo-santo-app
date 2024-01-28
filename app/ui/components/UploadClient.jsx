@@ -5,18 +5,15 @@ import Link from "next/link";
 import { fetcher } from "@/app/utils/fetcher";
 import CommonForm from "./commonForm";
 import { toast } from "react-toastify";
-import { useClient } from "@/app/context/ClientContext";
 
 const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
     const [errorSubmited, setErrorSubmited] = useState(false)
-    const { formState, setInfoForms, cleanFields } = useForms();
+    const {formState, setInfoForms, cleanFields } = useForms();
     const [responseData, setResponseData] = useState("")
-    const {updateClients} = useClient([])
 
 
 
     useEffect(() => {
-
         if (clientData && mode === 'modify') {
             setInfoForms('name', clientData.name)
             setInfoForms('email', clientData.email)
@@ -42,11 +39,9 @@ const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
                 if (response) {
                     setResponseData(response);
                     toast.success('El cliente ha sido modificado correctamente')
-                    updateClients(formState)
                 }
             }
             sendData();
-            updateClients(formState)
         } else {
 
             if (isFormNotEmpty) {
@@ -61,7 +56,6 @@ const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
                     if (response) {
                         setResponseData(response);
                         toast.success('El cliente ha sido agregado correctamente')
-                        updateClients(formState)
                     }
                 }
                 sendData();
@@ -72,6 +66,7 @@ const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
             }
 
         }
+        cleanFields();
 
 
     }

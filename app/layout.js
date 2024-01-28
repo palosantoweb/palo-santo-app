@@ -5,7 +5,6 @@ import localFont from "next/font/local"
 import { FormProvider } from './context/FormContext';
 import { ToastContainer } from 'react-toastify';
 import { ImagesProvider } from './context/ImagesContext';
-import { ClientProvider } from './context/ClientContext';
 
 
 export const metadata = {
@@ -116,7 +115,6 @@ export default function RootLayout({ children }) {
       <UserProvider>
         <FormProvider>
           <ImagesProvider>
-            <ClientProvider>
               <body suppressHydrationWarning={true}>
                 <ToastContainer
                   position="top-center"
@@ -133,7 +131,6 @@ export default function RootLayout({ children }) {
                   {children}
                 </Container>
               </body>
-            </ClientProvider>
           </ImagesProvider>
         </FormProvider>
       </UserProvider>

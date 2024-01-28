@@ -8,9 +8,9 @@ export const fetcher = async (url, options) => {
     }
 };
 
-export const fetchedClients = async(query, currentPage) =>{
+export const fetchedClients = async(query, currentPage, options) =>{
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}client${currentPage ? `?pageNumber=${currentPage}` : `?pageNumber=0` }${query ? `&name=${query}`: ''}`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}client${currentPage ? `?pageNumber=${currentPage}` : `?pageNumber=0` }${query ? `&name=${query}`: ''}`, options);
             const data = await response.json();
             return data;
         } catch (error) {

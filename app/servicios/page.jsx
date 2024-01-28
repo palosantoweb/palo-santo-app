@@ -10,7 +10,7 @@ const Servicios = () => {
     
 
     return (<>
-        <div className='min-h-screen flex flex-col'>
+        <div className='flex flex-col'>
             <div className='w-full flex flex-col items-center mb-6'>
                 <h1 className='md:px-8 py-2 text-2xl text-[#CC8942] md:text-6xl text-center italic font-bold mb-4'>
                     Descubre Nuestros Servicios</h1>
@@ -35,7 +35,7 @@ const Servicios = () => {
                 <Gallery />
                 <div className='bg-[#CC8942] px-8 py-4 md:px-28 md:py-20 block'>
                     <p className='text-white flex md:text-xl text-sm'>
-                        <Link href="/contacto" className='flex'>¡Contáctanos y Reserva Ahora!<GoArrowRight className='mt-1' /></Link>
+                        <Link href="/contacto" className='flex'>¡Contactanos y Reserva Ahora!<GoArrowRight className='mt-1' /></Link>
                     </p>
                 </div>
             </div>
