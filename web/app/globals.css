@@ -1,0 +1,25 @@
+@import "keep-react/css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    min-height: 100vh;
+}
+
+input{
+    border: 1px solid rgb(188, 190, 192);
+    height: 40px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.custom-datepicker{
+    padding-left: 10px;
+}
+
+
+.react-datepicker__input-container {
+    color: #CC8942;
+  }
+  
