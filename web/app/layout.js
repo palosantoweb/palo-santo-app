@@ -1,8 +1,10 @@
 import './globals.css'
-import Container from './components/Container'
+import Container from './ui/components/Container'
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import localFont from "next/font/local"
 import { FormProvider } from './context/FormContext';
+import { ToastContainer } from 'react-toastify';
+import { ImagesProvider } from './context/ImagesContext';
 
 
 export const metadata = {
@@ -107,15 +109,29 @@ const bozon = localFont({
 
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="es" className={`${bozon.variable} font-sans`}>
       <UserProvider>
         <FormProvider>
-        <body >
-          <Container>
-            {children}
-          </Container>
-        </body>
+          <ImagesProvider>
+              <body suppressHydrationWarning={true}>
+                <ToastContainer
+                  position="top-center"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light" />
+                <Container>
+                  {children}
+                </Container>
+              </body>
+          </ImagesProvider>
         </FormProvider>
       </UserProvider>
     </html>
