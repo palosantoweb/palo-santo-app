@@ -1,10 +1,12 @@
 'use client'
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
+import { Spinner } from "keep-react";
 
 
 function Map() {
     const mapRef = useRef(null)
+    const [loading, setLoading]= useState(true)
 
     useEffect(()=>{
         const initMap = async () =>{
@@ -38,7 +40,9 @@ function Map() {
         }
 
         initMap();
+        setLoading(false)
     },[])
+    if(loading) return <Spinner />
 
     return(<div  style={{ height: '300px', width: "60%" }} ref={mapRef} />)
 

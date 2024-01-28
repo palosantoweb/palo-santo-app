@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image';
-import PaloSanto from '../../public/PaloSanto.svg'
-import HamburgerIcon from '../../public/HamburgerIcon.svg'
+import PaloSanto from '../../../public/PaloSanto.svg'
+import HamburgerIcon from '../../../public/HamburgerIcon.svg'
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -30,7 +30,7 @@ const links=[
     <nav className='w-full bg-gray-900'>
            <div className='w-full bg-gray-900 flex flex-row justify-between'>
             <Link href="/">
-            <Image src={PaloSanto} alt='Palo Santo' />
+            <Image src={PaloSanto} alt='Palo Santo' priority />
             </Link>
         <div className="lg:hidden cursor-pointer mr-5 mt-3">
           <button onClick={() => setShow(prev => !prev)}>
