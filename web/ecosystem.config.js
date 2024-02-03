@@ -10,7 +10,7 @@ module.exports = {
       user: 'root',
       host: '149.50.136.81',
       ref: 'origin/main',
-      repo: 'https://palosanto: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@github.com/palosantoweb/palo-santo',
+      repo: 'https://palosanto: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@github.com/palosantoweb/palo-santo-app',
       path: '/home/ubuntu',
       'pre-deploy-local': '',
       'post-deploy':
