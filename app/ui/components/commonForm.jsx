@@ -3,12 +3,14 @@
 import { useRef, useState } from "react";
 import CustomDropdown from "./DropdownComponent";
 import DatePickerCustom from "./DatePickerCustom";
+import { uploadClient } from "@/app/lib/actions";
+import { toast } from "react-toastify";
 
-const CommonForm = ({ formState, cleanFields = () => { }, handleSubmit = () => { }, setInfoForms = () => { }, responseDataCountries, mode = 'client', id}) => {
+const CommonForm = ({ formState, cleanFields = () => { }, setInfoForms = () => { }, responseDataCountries, mode = 'client', id}) => {
     const [selectedValue, setSelectedValue] = useState(null);
 
     return (
-        <form className="md:w-[50%]" onSubmit={(e) => { handleSubmit(e), cleanFields() }}>
+        <form className="md:w-[50%]" action={async (formData)=> { await uploadClient(formData, formState.nationality, formState.consultation, mode, id); toast.success( mode==='client'? 'El formulario se ha enviado exitosamente' : mode==='create'? 'El cliente se ha creado correctamente': "el cliente ha sido correctamente modificado"); cleanFields()}}>
             <div>
                 {
                     mode === 'modify' ?
@@ -18,6 +20,7 @@ const CommonForm = ({ formState, cleanFields = () => { }, handleSubmit = () => {
                             <input
                                 disabled
                                 id="#id-10"
+                                name="id"
                                 value={id}
                                />
                         </> :
@@ -28,6 +31,7 @@ const CommonForm = ({ formState, cleanFields = () => { }, handleSubmit = () => {
                 <label htmlFor="#id-11">Nombre y Apellido</label>
                 <input
                     id="#id-11"
+                    name="name"
                     value={formState.name}
                     onChange={(e) => { setInfoForms('name', e.target.value) }}
                     required
@@ -38,6 +42,7 @@ const CommonForm = ({ formState, cleanFields = () => { }, handleSubmit = () => {
                 <label htmlFor="#id-12"> Email </label>
                 <input
                     id="#id-12"
+                    name="email"
                     value={formState.email}
                     onChange={(e) => { setInfoForms('email', e.target.value) }}
                     required
@@ -49,6 +54,7 @@ const CommonForm = ({ formState, cleanFields = () => { }, handleSubmit = () => {
                 <input
                     id="#id-13"
                     color="gray"
+                    name="phoneNumber"
                     value={formState.phoneNumber}
                     onChange={(e) => { setInfoForms('phoneNumber', e.target.value) }}
                     required
