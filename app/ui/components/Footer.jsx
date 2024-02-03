@@ -29,7 +29,8 @@ const Footer = async() => {
     ]
 
     return ( 
-    <footer className="flex items-center justify-between bg-gray-900 border-t-[1.5px]  border-gray-500 text-white bottom-0">
+    <footer className="relative bottom-0 ">
+    <div className=" flex w-full items-center justify-between bg-gray-900 border-t-[1.5px]  border-gray-500 text-white">
     <div className='mt-0 mb-3 flex'>
       <Image src={PS} alt='footer'/>
       </div>
@@ -49,6 +50,7 @@ const Footer = async() => {
         </div>
       }
 
+    </div>
     </div>
   </footer>
 );

@@ -25,8 +25,15 @@ const DatePickerCustom = ({ formState, setInfoForms }) => {
 
     }
 
+    const calculateMaxDate = () => {
+      const currentDate = new Date();
+      currentDate.setFullYear(currentDate.getFullYear() - 18);
+      return currentDate;
+    };
+
   return (
     <ReactDatePicker
+      name="birthDate"
       selected={selected()}
       onChange={(date) => handleDateChange(date)}
       placeholderText=" Día / Mes / Año "
@@ -35,6 +42,7 @@ const DatePickerCustom = ({ formState, setInfoForms }) => {
       isClearable
       className="custom-datepicker"
       required
+      maxDate={calculateMaxDate()}
     />);
 
 }
