@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  pagesDir: 'web/app',
+  basePath: '/web',
   images: {
     remotePatterns: [
       {
