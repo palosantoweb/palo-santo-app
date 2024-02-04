@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  basePath: '/web',
   images: {
     remotePatterns: [
       {
