@@ -8,7 +8,7 @@ import { useImages } from "@/app/context/ImagesContext";
 
 export const CarouselComponent = ({ session }) => {
   const [loading, setLoading] = useState(true)
-  const {imageCarrousel, updateImagesCarrousel, removeImageCarrousel} = useImages();
+  const { imageCarrousel, updateImagesCarrousel, removeImageCarrousel } = useImages();
 
 
 
@@ -50,7 +50,7 @@ export const CarouselComponent = ({ session }) => {
               <Image src={base64} alt={name} layout="fill" style={{ objectFit: "cover" }} />
             </div>
           )) :
-            <h1>Estamos trabajando para mejorar el sitio, esto estará visible más tarde</h1>}
+            <></>}
         </Carousel>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
@@ -73,12 +73,8 @@ export const CarouselComponent = ({ session }) => {
           ))
           }
         </div>
-      
-      )}
-      {
-            session && imageCarrousel.length === 0 && <h1 className="text-center">No hay imagenes cargadas en el carrousel</h1>
 
-      }
+      )}
     </div>
   );
 };

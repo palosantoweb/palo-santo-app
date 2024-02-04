@@ -1,6 +1,7 @@
 export const fetcher = async (url, options) => {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${url}`, options);
+        console.log('aaaaa', process.env.NEXT_PUBLIC_BASE_URL, url, options)
         const data = await response.json();
         return data;
     } catch (error) {
