@@ -10,7 +10,7 @@ module.exports = {
       user: 'root',
       host: '149.50.136.81',
       ref: 'origin/main',
-      repo: 'git@github.com:palosantoweb/palo-santo-app',
+      repo: 'git@github.com:palosantoweb/palo-santo-app.git',
       path: '/home/ubuntu',
       'pre-deploy-local': '',
       'post-deploy':
