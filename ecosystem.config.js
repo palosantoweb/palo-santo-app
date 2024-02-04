@@ -18,7 +18,7 @@ module.exports = {
     },
     {
       name: 'frontend',
-      script: 'cd web && npm start',
+      script: 'npm start',
       // watch: true,
       // env: {
       //   NODE_ENV: 'development',
