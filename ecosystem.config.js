@@ -7,7 +7,7 @@ module.exports = {
   apps: [
     {
       name: 'backend',
-      script: 'cd server && npm start',
+      script: 'cd server && npm run dev',
       // watch: true,
       // env: {
       //   NODE_ENV: 'development',
