@@ -5,7 +5,7 @@ module.exports = {
       {
         protocol: 'http',
         hostname: '149.50.136.81',
-        port: '8000',
+        port: '9000',
       },
     ],
   },

@@ -26,7 +26,8 @@ app.use('/api/', router);
 // Control de Errores
 app.use(ErrorHandler);
 
-
+console.log("[ENVIIROMENTS]:")
+console.log({ PORT, HOST, ALLOWED_ORIGIN })
 sequelize
   .sync({ force: true })
   .then(() => {
