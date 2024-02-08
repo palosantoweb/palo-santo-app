@@ -32,7 +32,7 @@ sequelize
   .then(() => {
     console.log('Synced db!');
     populateDB().then(res => {
-      console.log('DB populated!')
+      console.log('DB populated!!')
       app.listen(PORT, () => {
         console.log(`⚡️[server]: Server is running at http://${HOST}:${PORT}`);
       });
