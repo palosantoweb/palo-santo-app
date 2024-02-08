@@ -1,33 +1,33 @@
 module.exports = {
-  apps: [
-    {
-      script: 'npm run dev',
-    },
-  ],
   // apps: [
   //   {
-  //     name: 'backend',
-  //     script: 'cd server && npm run dev',
-  // watch: true,
-  // env: {
-  //   NODE_ENV: 'development',
-  // },
-  // env_production: {
-  //   NODE_ENV: 'production',
-  // },
-  // },
-  // {
-  //   name: 'frontend',
-  //   script: 'npm start',
-  // watch: true,
-  // env: {
-  //   NODE_ENV: 'development',
-  // },
-  // env_production: {
-  //   NODE_ENV: 'production',
-  // },
-  // },
+  //     script: 'npm start',
+  //   },
   // ],
+  apps: [
+    {
+      name: 'backend',
+      script: 'cd server && npm run dev',
+      watch: true,
+      env: {
+        NODE_ENV: 'development',
+      },
+      env_production: {
+        NODE_ENV: 'production',
+      },
+    },
+    {
+      name: 'frontend',
+      script: 'npm start',
+      watch: true,
+      env: {
+        NODE_ENV: 'development',
+      },
+      env_production: {
+        NODE_ENV: 'production',
+      },
+    },
+  ],
   deploy: {
     production: {
       user: 'root',
