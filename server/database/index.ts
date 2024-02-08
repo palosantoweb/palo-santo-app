@@ -13,7 +13,7 @@ let sequelize =
             database: process.env.DB_NAME,
             dialect: "postgres",
             host: process.env.DB_HOST,
-            port: 5432,
+            port: 53216,
             username: process.env.DB_USER,
             password: "DCI185327set",
             pool: {
