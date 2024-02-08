@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev; concurrently \"npx tsc --watch\" \"nodemon -q server/dist/server.js\"",
+    "dev": "next dev; concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
