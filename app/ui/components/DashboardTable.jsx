@@ -6,7 +6,6 @@ import Link from "next/link";
 
 const DashboardTable = ({ session, userData, clientData }) => {
 
-
     return (
         <>
             {userData.email === session ? (

@@ -27,6 +27,7 @@ export const CarouselComponent = ({ session }) => {
 
     fetchData();
   }, []);
+  
 
   const handleRemoveImage = async (name) => {
     try {

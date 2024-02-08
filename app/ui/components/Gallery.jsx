@@ -56,7 +56,10 @@ const Gallery = ({session}) => {
           console.error("Error deleting image:", error);
         }
       };
+
     if(loading) return <Spinner />
+
+    
     return (<>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
             {imageGallery.length > 0 && imageGallery.map(({name, base64},index) => (
