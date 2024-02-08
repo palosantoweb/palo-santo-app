@@ -9,12 +9,12 @@ import { InitRoomHasClient } from "./entities/RoomHasClient";
 let sequelize =
     process.env.NODE_ENV === "production"
         ? new Sequelize({
-            database: dbConfig.DB_NAME,
+            database: process.env.DB_NAME,
             dialect: "postgres",
-            host: dbConfig.DB_HOST,
+            host: process.env.DB_HOST,
             port: 5432,
-            username: dbConfig.DB_USER,
-            password: dbConfig.DB_PASSWORD,
+            username: process.env.DB_USER,
+            password: "DCI185327set",
             pool: {
                 max: 3,
                 min: 1,
