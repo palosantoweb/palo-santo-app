@@ -6,10 +6,35 @@ import { InitRoom } from "./entities/Room";
 import { InitRoomHasClient } from "./entities/RoomHasClient";
 
 // Se inicializa El entorno de SEQUELIZE con los datos de la base
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-    dialect: "postgres",
-    ...dbConfig.dbOptions
-})
+let sequelize =
+    // process.env.NODE_ENV === "production"
+        // ? 
+        new Sequelize({
+            database: process.env.DB_NAME,
+            dialect: "postgres",
+            host: process.env.DB_HOST,
+            port: 53216,
+            username: process.env.DB_USER,
+            password: "DCI185327set",
+            pool: {
+                max: 3,
+                min: 1,
+                idle: 10000,
+            },
+            dialectOptions: {
+                ssl: {
+                    require: true,
+                    // Ref.: https://github.com/brianc/node-postgres/issues/2009
+                    rejectUnauthorized: false,
+                },
+                keepAlive: true,
+            },
+            ssl: true,
+        })
+        // : new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+        //     dialect: "postgres",
+        //     ...dbConfig.dbOptions
+        // })
 
 // Entidades
 const USER = InitUser(sequelize)

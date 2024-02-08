@@ -26,13 +26,14 @@ app.use('/api/', router);
 // Control de Errores
 app.use(ErrorHandler);
 
-
+console.log("[ENVIIROMENTS]:")
+console.log({ PORT, HOST, ALLOWED_ORIGIN })
 sequelize
   .sync({ force: true })
   .then(() => {
     console.log('Synced db!');
     populateDB().then(res => {
-      console.log('DB populated!')
+      console.log('DB populated!!')
       app.listen(PORT, () => {
         console.log(`⚡️[server]: Server is running at http://${HOST}:${PORT}`);
       });
