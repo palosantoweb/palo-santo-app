@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { dbConfig } from "./db.config"
+// import { dbConfig } from "./db.config"
 import { InitUser } from "./entities/User";
 import { InitClient } from "./entities/Client";
 import { InitRoom } from "./entities/Room";
@@ -10,12 +10,12 @@ let sequelize =
     // process.env.NODE_ENV === "production"
         // ? 
         new Sequelize({
-            database: process.env.DB_NAME,
+            database: "palo_santo",
             dialect: "postgres",
-            host: process.env.DB_HOST,
-            port: 53216,
-            username: process.env.DB_USER,
-            password: "DCI185327set",
+            host: "127.0.0.1",
+            port: 5432,
+            username: "postgres",
+            password: "postgres",
             pool: {
                 max: 3,
                 min: 1,
