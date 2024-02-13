@@ -12,9 +12,9 @@ let sequelize =
         new Sequelize({
             database: "palo_santo",
             dialect: "postgres",
-            host: process.env.DB_HOST,
-            port: 53216,
-            username: process.env.DB_USER,
+            host: "127.0.0.1",
+            port: 5432,
+            username: "postgres",
             password: "DCI185327set",
             pool: {
                 max: 3,
