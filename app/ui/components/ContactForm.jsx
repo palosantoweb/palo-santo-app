@@ -19,7 +19,7 @@ const ContactForm = ({responseDataCountries, mode}) => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              access_key: "287fab4b-3013-42d4-99a5-fc5c2d844333",
+              access_key: process.env.NEXT_PUBLIC_FORMS,
               ...formState,
             }),
           });
