@@ -1,32 +1,32 @@
 
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import { UserModel } from '../models/UserModel';
 import { Optional } from 'sequelize';
 import { User } from './entities/User';
 // Se inicia el enviroment
-dotenv.config();
+// dotenv.config();
 
 // Variables de entorno
-const {
-    HOST,
-    DB_USER,
-    DB_PASSWORD,
-    DB_NAME
-} = process.env
+// const {
+//     HOST,
+//     DB_USER,
+//     DB_PASSWORD,
+//     DB_NAME
+// } = process.env
 
 export const dbConfig: any = {
-    DB: DB_NAME,
-    USER: DB_USER,
-    PASSWORD: DB_PASSWORD,
-    dbOptions: {
-        host: HOST,
-        pool: {
-            max: 5,
-            min: 0,
-            acquire: 30000,
-            idle: 10000
-        }
-    }
+    // DB: DB_NAME,
+    // USER: DB_USER,
+    // PASSWORD: DB_PASSWORD,
+    // dbOptions: {
+    //     host: HOST,
+    //     pool: {
+    //         max: 5,
+    //         min: 0,
+    //         acquire: 30000,
+    //         idle: 10000
+    //     }
+    // }
 };
 
 // Funcion para popular base de datos

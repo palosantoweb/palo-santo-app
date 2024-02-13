@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { dbConfig } from "./db.config"
+// import { dbConfig } from "./db.config"
 import { InitUser } from "./entities/User";
 import { InitClient } from "./entities/Client";
 import { InitRoom } from "./entities/Room";
