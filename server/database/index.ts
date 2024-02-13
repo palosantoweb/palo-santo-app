@@ -15,7 +15,7 @@ let sequelize =
             host: "127.0.0.1",
             port: 5432,
             username: "postgres",
-            password: "DCI185327set",
+            password: "postgres",
             pool: {
                 max: 3,
                 min: 1,
