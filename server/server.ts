@@ -33,7 +33,7 @@ sequelize
     populateDB().then(res => {
       console.log('DB populated!!')
       app.listen("8000", () => {
-        console.log(`⚡️[server]: Server is running`);
+        console.log(`⚡️[server]: Server is running at host:port/api`);
       });
     });
   })

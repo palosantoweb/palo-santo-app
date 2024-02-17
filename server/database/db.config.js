@@ -8,30 +8,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.populateDB = exports.dbConfig = void 0;
-const dotenv_1 = __importDefault(require("dotenv"));
 const User_1 = require("./entities/User");
 // Se inicia el enviroment
-dotenv_1.default.config();
+// dotenv.config();
 // Variables de entorno
-const { HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
+// const {
+//     HOST,
+//     DB_USER,
+//     DB_PASSWORD,
+//     DB_NAME
+// } = process.env
 exports.dbConfig = {
-    DB: DB_NAME,
-    USER: DB_USER,
-    PASSWORD: DB_PASSWORD,
-    dbOptions: {
-        host: HOST,
-        pool: {
-            max: 5,
-            min: 0,
-            acquire: 30000,
-            idle: 10000
-        }
-    }
+// DB: DB_NAME,
+// USER: DB_USER,
+// PASSWORD: DB_PASSWORD,
+// dbOptions: {
+//     host: HOST,
+//     pool: {
+//         max: 5,
+//         min: 0,
+//         acquire: 30000,
+//         idle: 10000
+//     }
+// }
 };
 // Funcion para popular base de datos
 function populateDB() {
