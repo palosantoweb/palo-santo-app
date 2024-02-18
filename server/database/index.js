@@ -8,36 +8,31 @@ const Client_1 = require("./entities/Client");
 const Room_1 = require("./entities/Room");
 const RoomHasClient_1 = require("./entities/RoomHasClient");
 // Se inicializa El entorno de SEQUELIZE con los datos de la base
-let sequelize = 
-// process.env.NODE_ENV === "production"
-// ?
-new sequelize_1.Sequelize({
-    database: db_config_1.dbConfig.DB,
-    dialect: 'postgres',
-    host: db_config_1.dbConfig.dbOptions.HOST,
-    port: 5432,
-    username: db_config_1.dbConfig.USER,
-    password: db_config_1.dbConfig.PASSWORD,
-    pool: {
-        max: 3,
-        min: 1,
-        idle: 10000,
-    },
-    dialectOptions: {
-        ssl: {
-            require: true,
-            // Ref.: https://github.com/brianc/node-postgres/issues/2009
-            rejectUnauthorized: false,
+let sequelize = process.env.NODE_ENV === 'production'
+    ? new sequelize_1.Sequelize({
+        database: db_config_1.dbConfig.DB,
+        dialect: 'postgres',
+        host: db_config_1.dbConfig.dbOptions.HOST,
+        port: 5432,
+        username: db_config_1.dbConfig.USER,
+        password: db_config_1.dbConfig.PASSWORD,
+        pool: {
+            max: 3,
+            min: 1,
+            idle: 10000,
         },
-        keepAlive: true,
-    },
-    ssl: true,
-});
+        dialectOptions: {
+            ssl: {
+                require: true,
+                // Ref.: https://github.com/brianc/node-postgres/issues/2009
+                rejectUnauthorized: false,
+            },
+            keepAlive: true,
+        },
+        ssl: true,
+    })
+    : new sequelize_1.Sequelize(db_config_1.dbConfig.DB, db_config_1.dbConfig.USER, db_config_1.dbConfig.PASSWORD, Object.assign({ dialect: 'postgres' }, db_config_1.dbConfig.dbOptions));
 exports.sequelize = sequelize;
-// : new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-//     dialect: "postgres",
-//     ...dbConfig.dbOptions
-// })
 // Entidades
 const USER = (0, User_1.InitUser)(sequelize);
 const CLIENT = (0, Client_1.InitClient)(sequelize);
