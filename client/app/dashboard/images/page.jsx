@@ -3,7 +3,6 @@ import UploadImagesComponent from "@/app/ui/components/UploadImagesComponent";
 import { CarouselComponent } from "@/app/ui/components/Carousel";
 import { getSession } from "@auth0/nextjs-auth0";
 import Link from "next/link";
-import { fetcher } from "@/app/utils/fetcher";
 
 
 const ImagePage = async() => {
@@ -14,9 +13,9 @@ const session = await getSession();
 
     return ( <>
     <div className="min-h-screen">
-    <div className='bg-[#CC8942] w-[15%] mt-5 ml-6 py-4 rounded-md px-10'>
+    <div className='bg-[#CC8942] w-[15%] mt-5 ml-6 py-4 rounded-md'>
     <p className='text-white flex items-center justify-center md:text-xl text-sm'>
-        <Link href='/dashboard'>Volver al dashboard</Link>
+        <Link href='/dashboard' className="pl-4">Volver al dashboard</Link>
     </p>
     </div>
 

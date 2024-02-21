@@ -12,7 +12,7 @@ const Nosotros = () => {
           Descubre Nuestro Rincón de Ensueño en la Majestuosa Patagonia
         </h1>
         <hr className='border-1 border-gray-300 w-full mr-[40%]' />
-        <div className='mt-10 md:text-2xl px-8 md:px-32 text-justify italic font-semibold text-gray-500 mb-7'>
+        <div className='mt-10 md:text-2xl px-8 md:px-32 text-justify italic font-semibold text-gray-400 mb-7'>
           <p>
             Somos una familia mendocina que, cautivada por la belleza de esta
             región, decidió crear un espacio único que ahora queremos compartir
@@ -36,7 +36,7 @@ const Nosotros = () => {
           <hr className='border-1 border-gray-300 w-full mt-3 mb-12' />
         </div>
         <div className='px-10 md:ml-16 text-justify md:text-2xl flex items-center justify-between flex-col md:flex-row text-gray-500 mb-6'>
-          <Image src={Bike} alt='foto dos' width={500} height={300} />
+          <Image src={Trekking} alt='foto dos' width={500} height={300}/>
           <p className='md:ml-6 mt-3 md:mr-48'>
             En nuestro complejo, diseñado y construido con amor por apasionados
             arquitectos e ingenieros, encontrarás tu refugio perfecto. Hemos
@@ -59,7 +59,7 @@ const Nosotros = () => {
               </p>
             </div>
             <div className='flex-1'>
-              <Image src={Trekking} alt='foto uno' width={500} height={300} />
+              <Image src={Bike} alt='foto uno' width={500} height={300} />
             </div>
           </div>
           <div className='w-full flex flex-col items-end md:pl-28'>
@@ -72,7 +72,7 @@ const Nosotros = () => {
                 maravillas que la Patagonia tiene para ofrecer.
               </p>
             </div>
-            <div className='mt-10 md:text-2xl px-10 text-justify italic font-semibold text-gray-500'>
+            <div className='mt-10 md:text-2xl px-10 text-justify italic font-semibold text-gray-400'>
               <p>
                 Ven y únete a nuestra familia, sumérgete en la magia de la
                 Patagonia desde nuestro campo base. Estamos ansiosos por

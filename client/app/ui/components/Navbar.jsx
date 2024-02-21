@@ -30,7 +30,7 @@ const links=[
     <nav className='w-full bg-gray-900'>
            <div className='w-full bg-gray-900 flex flex-row justify-between'>
             <Link href="/">
-            <Image src={PaloSanto} alt='Palo Santo' priority />
+            <Image src={PaloSanto} alt='Palo Santo' width={150} height={250} />
             </Link>
         <div className="lg:hidden cursor-pointer mr-5 mt-3">
           <button onClick={() => setShow(prev => !prev)}>

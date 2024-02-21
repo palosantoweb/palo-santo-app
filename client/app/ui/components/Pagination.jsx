@@ -17,7 +17,7 @@ const Pagination = ({ totalPages }) => {
 
 
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-10">
             <Link
                 className={`border-2 border-[#CC8942] p-2 rounded ${currentPage === 0 ? 'cursor-not-allowed opacity-50 pointer-events-none' : ''}`}
                 href={createPageURL(currentPage - 1)}

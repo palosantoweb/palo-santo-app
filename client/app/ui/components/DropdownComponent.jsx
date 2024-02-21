@@ -35,6 +35,7 @@ const CustomDropdown = ({ data, selectedValue, setSelectedValue, formState, setI
             aria-haspopup="true"
             aria-expanded="true"
             onClick={handleToggle}
+            data-name="nationality"
           >
             {formState.nationality !== null ? formState.nationality : selectedValue ? selectedValue : 'Nacionalidad'}
           </button>
@@ -47,6 +48,7 @@ const CustomDropdown = ({ data, selectedValue, setSelectedValue, formState, setI
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"
+          data-name="nationality"
         >
           <div className="py-1">
             <div className="p-3">
@@ -56,12 +58,13 @@ const CustomDropdown = ({ data, selectedValue, setSelectedValue, formState, setI
                 placeholder="Buscar"
                 value={searchTerm}
                 onChange={(e) => handleChange(e)}
+                name="nationality"
               />
             </div>
             {filteredData.length > 0 ? (
-              <div className="max-h-60 overflow-y-auto">
+              <div className="max-h-60 overflow-y-auto" name="nationality">
                 {filteredData.map(({ name }, index) => (
-                  <div key={index} className="cursor-pointer py-2 px-4 hover:bg-gray-200" onClick={() => handleSelectedValue(name.common)}>
+                  <div key={index} className="cursor-pointer py-2 px-4 hover:bg-gray-200" data-name="nationality" onClick={() => handleSelectedValue(name.common)}>
                     {name.common}
                   </div>
                 ))}
