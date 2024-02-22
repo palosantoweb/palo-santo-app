@@ -2,9 +2,9 @@
 import { Carousel, Spinner } from "keep-react";
 import { fixBase64Format } from "../../utils/CorrectBase64";
 import Image from "next/image";
-import { fetcher } from "@/app/utils/fetcher";
 import { useEffect, useState } from "react";
-import { useImages } from "@/app/context/ImagesContext";
+import { fetcher } from "../../utils/fetcher";
+import { useImages } from "../../context/ImagesContext";
 
 const imageCarrousel = []
 

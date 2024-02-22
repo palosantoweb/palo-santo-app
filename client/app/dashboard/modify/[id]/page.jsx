@@ -1,5 +1,5 @@
-import UploadClient from "@/app/ui/components/UploadClient";
-import { fetcher } from "@/app/utils/fetcher";
+import UploadClient from "../../../ui/components/UploadClient";
+import { fetcher } from "../../../utils/fetcher"
 import Link from "next/link";
 
 const ModifyClient = async ({ params }) => {

@@ -1,9 +1,9 @@
 'use client'
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import CustomDropdown from "./DropdownComponent";
 import DatePickerCustom from "./DatePickerCustom";
-import { uploadClient } from "@/app/lib/actions";
+import { uploadClient } from "../../lib/actions";
 import { toast } from "react-toastify";
 
 const CommonForm = ({ formState, cleanFields = () => { }, setInfoForms = () => { }, responseDataCountries, mode = 'client', id}) => {

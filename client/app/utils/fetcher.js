@@ -1,8 +1,10 @@
+import axios from "axios";
+
 const BASE_URL = process.env.NODE_ENV === 'production' ? "api/" : process.env.NEXT_PUBLIC_BASE_URL
 
 export const fetcher = async (url, options) => {
     try {
-        const response = await fetch(`${BASE_URL}${url}`, options);
+        const response = await axios.get(`/api/routes/${url}`, options);
         const data = await response.json();
         return data;
     } catch (error) {

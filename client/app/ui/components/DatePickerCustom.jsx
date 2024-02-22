@@ -2,7 +2,6 @@
 
 import ReactDatePicker from "react-datepicker";
 import { formatToDma } from "../../utils/date";
-import moment from "moment";
 
 
 const DatePickerCustom = ({ formState, setInfoForms }) => {

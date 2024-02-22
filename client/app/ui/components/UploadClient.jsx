@@ -2,9 +2,7 @@
 import { useEffect, useState } from "react";
 import { useForms } from "../../context/FormContext";
 import Link from "next/link";
-import { fetcher } from "@/app/utils/fetcher";
 import CommonForm from "./commonForm";
-import { toast } from "react-toastify";
 
 const UploadClient = ({ responseDataCountries, clientData, mode, id }) => {
     const [errorSubmited, setErrorSubmited] = useState(false)
