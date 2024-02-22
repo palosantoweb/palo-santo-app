@@ -6,13 +6,13 @@ import { fetcher } from "@/app/utils/fetcher";
 import { useEffect, useState } from "react";
 import { useImages } from "@/app/context/ImagesContext";
 
+const imageCarrousel = []
+
 export const CarouselComponent = ({ session }) => {
   const [loading, setLoading] = useState(true)
   const { imageCarrousel, updateImagesCarrousel, removeImageCarrousel } = useImages();
 
-
-
-  useEffect(() => {
+   useEffect(() => {
     const fetchData = async () => {
       try {
         const carouselImages = await fetcher(`carrousel`);
@@ -26,7 +26,8 @@ export const CarouselComponent = ({ session }) => {
     };
 
     fetchData();
-  }, []);
+  }, []); 
+
 
   const handleRemoveImage = async (name) => {
     try {
@@ -43,16 +44,17 @@ export const CarouselComponent = ({ session }) => {
 
   return (
     <div className="mb-6 md:mb-12">
-      {!session ? (
+      {!session && imageCarrousel.length > 0  ? (
         <Carousel slideInterval={5000} showControls={true} indicators={true}>
-          {imageCarrousel.length > 0 ? imageCarrousel.map(({ name, base64 }) => (
+          {imageCarrousel.map(({ name, base64 }) => (
             <div key={name}>
               <Image src={base64} alt={name} layout="fill" style={{ objectFit: "cover" }} />
             </div>
-          )) :
-            <></>}
-        </Carousel>
-      ) : (
+          ))}
+        </Carousel>)
+         :
+        <></>}
+      { session && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
           {imageCarrousel.length > 0 && imageCarrousel.map(({ name, base64 }) => (
             <div key={name} className="overflow-hidden rounded-lg shadow-md">
