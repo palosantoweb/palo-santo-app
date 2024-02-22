@@ -1,15 +1,17 @@
-import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Sequelize, DataTypes, ForeignKey } from 'sequelize';
-import { Room } from './Room';
-import { Client } from './Client';
+/* eslint-disable no-unused-vars */
+import { Model, InferAttributes, Sequelize, DataTypes, CreationOptional, InferCreationAttributes } from 'sequelize';
+import connection from '../connection';
+import { Client } from '../entities/Client';
+import { Room } from '../entities/Room';
 
-export class RoomHasClient extends Model<InferAttributes<RoomHasClient>, InferCreationAttributes<RoomHasClient>> {
-    declare id: CreationOptional<number>;
-    declare room: Room;
-    declare client: Client;
-    declare status: CreationOptional<string>;
-}
+const InitRoomHasClient = (sequelize: Sequelize) => {
+    class RoomHasClient extends Model<InferAttributes<RoomHasClient>, InferCreationAttributes<RoomHasClient>> {
+        declare id: CreationOptional<number>;
+        declare room: Room;
+        declare client: Client;
+        declare status: CreationOptional<string>;
+    }
 
-export function InitRoomHasClient(sequelize: Sequelize) {
     RoomHasClient.init({
         id: {
             type: DataTypes.INTEGER,
@@ -39,3 +41,4 @@ export function InitRoomHasClient(sequelize: Sequelize) {
     }, { sequelize, tableName: "room_has_client" })
     return RoomHasClient;
 }
+export default InitRoomHasClient(connection);

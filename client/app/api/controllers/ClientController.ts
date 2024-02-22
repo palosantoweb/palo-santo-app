@@ -3,7 +3,7 @@ import { ClientModel } from "../models/ClientModel";
 import { convertClient, unconvertClient } from "../converters/ClientConverter";
 import { FindOptions, Op, WhereOptions } from "sequelize";
 import { PageableModel } from "../models/PageableModel";
-import { Client } from "../database/entities/Client";
+import Client from "../database/models/Client";
 
 export async function saveUpdate(client: ClientModel, clientId?: number): Promise<ClientModel> {
     // Valido datos del cliente
@@ -23,7 +23,7 @@ export async function saveUpdate(client: ClientModel, clientId?: number): Promis
         throw new RequestError(new Error(), "Debe enviar el numero de telefono del cliente.", 419);
 
     // Instancio y creo el cliente en la base
-    let dbClient: Client | null = null;
+    let dbClient: any | null = null;
     if (clientId) {
         dbClient = await Client.findByPk(clientId)
         if (!dbClient)
@@ -41,7 +41,7 @@ export async function saveUpdate(client: ClientModel, clientId?: number): Promis
 }
 
 export async function getAll(pageNumber: number, id?: number, email?: string, name?: string, nationality?: string, phoneNumber?: number, birthDate?: Date): Promise<PageableModel<ClientModel>> {
-    const whereOptions: WhereOptions<Client> = {}
+    const whereOptions: WhereOptions<any> = {}
     const size: number = 10
 
     if (id) whereOptions.id = id
@@ -51,7 +51,7 @@ export async function getAll(pageNumber: number, id?: number, email?: string, na
     if (phoneNumber) whereOptions.phoneNumber = phoneNumber
     if (birthDate) whereOptions.birthDate = birthDate
 
-    let findOptions: FindOptions<Client> = {
+    let findOptions: FindOptions<any> = {
         where: whereOptions,
         order: [["name", "DESC"]]
     }
@@ -62,7 +62,7 @@ export async function getAll(pageNumber: number, id?: number, email?: string, na
             offset: size * pageNumber
         }
     }
-    const clients: Client[] = await Client.findAll(findOptions)
+    const clients: any[] = await Client.findAll(findOptions)
 
     const totalElements = (await Client.count({ where: whereOptions }))
     console.log("estoy aca!!!")

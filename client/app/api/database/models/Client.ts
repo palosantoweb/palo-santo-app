@@ -1,15 +1,16 @@
-import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Sequelize, DataTypes } from 'sequelize';
+/* eslint-disable no-unused-vars */
+import { Model, InferAttributes, Sequelize, DataTypes, CreationOptional, InferCreationAttributes } from 'sequelize';
+import connection from '../connection';
 
-export class Client extends Model<InferAttributes<Client>, InferCreationAttributes<Client>> {
-    declare id: CreationOptional<number>;
-    declare birthDate: CreationOptional<Date>;
-    declare email: CreationOptional<string>;
-    declare name: CreationOptional<string>;
-    declare nationality: CreationOptional<string>;
-    declare phoneNumber: CreationOptional<number>;
-}
-
-export function InitClient(sequelize: Sequelize) {
+const InitClient = (sequelize: Sequelize) => {
+    class Client extends Model<InferAttributes<Client>, InferCreationAttributes<Client>> {
+        declare id: CreationOptional<number>;
+        declare birthDate: CreationOptional<Date>;
+        declare email: CreationOptional<string>;
+        declare name: CreationOptional<string>;
+        declare nationality: CreationOptional<string>;
+        declare phoneNumber: CreationOptional<number>;
+    }
     Client.init({
         id: {
             type: DataTypes.INTEGER,
@@ -39,3 +40,4 @@ export function InitClient(sequelize: Sequelize) {
     }, { sequelize, tableName: "client" })
     return Client
 }
+export default InitClient(connection);

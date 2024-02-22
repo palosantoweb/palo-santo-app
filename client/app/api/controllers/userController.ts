@@ -1,7 +1,7 @@
 import { convertUser } from "../converters/UserConverter";
-import { User } from "../database/entities/User";
 import { UserModel } from "../models/UserModel";
 import { RequestError } from "./error/ErrorHandler";
+import User from '../database/models/User'
 
 export async function login(email: string): Promise<UserModel> {
     const dbUser = await User.findOne({ where: { email } })

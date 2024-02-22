@@ -1,6 +1,6 @@
 "use client";
 import { Carousel, Spinner } from "keep-react";
-import { fixBase64Format } from "@/app/utils/CorrectBase64";
+import { fixBase64Format } from "../../utils/CorrectBase64";
 import Image from "next/image";
 import { fetcher } from "@/app/utils/fetcher";
 import { useEffect, useState } from "react";
