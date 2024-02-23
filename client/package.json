@@ -44,6 +44,7 @@
     "@types/google.maps": "^3.54.10",
     "@types/multer": "^1.4.11",
     "@types/node": "^20.6.3",
+    "@types/pg": "^8.11.0",
     "@types/react": "^18.2.57",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.6",

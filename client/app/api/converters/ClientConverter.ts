@@ -1,7 +1,7 @@
-import { Client } from "../database/entities/Client";
+import Client from "../database/models/Client";
 import { ClientModel } from "../models/ClientModel";
 
-export function convertClient(dbClient: Client, client?: ClientModel): ClientModel {
+export function convertClient(dbClient: any, client?: ClientModel): ClientModel {
     if (!client)
         client = new ClientModel()
     client.id = dbClient.id
@@ -14,7 +14,7 @@ export function convertClient(dbClient: Client, client?: ClientModel): ClientMod
     return client
 }
 
-export function unconvertClient(client: ClientModel, dbClient?: Client | null): Client {
+export function unconvertClient(client: ClientModel, dbClient?: any | null): any {
     if (!dbClient)
         dbClient = new Client()
     if (client.id)

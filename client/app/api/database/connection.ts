@@ -1,6 +1,7 @@
 
 import { Sequelize } from "sequelize";
 import { dbConfig } from "./db.config";
+import pg from 'pg'
 
 let sequelize =
     process.env.NODE_ENV === 'production'
@@ -28,6 +29,7 @@ let sequelize =
         })
         : new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
             dialect: 'postgres',
+            dialectModule: pg,
             ...dbConfig.dbOptions,
         });
 

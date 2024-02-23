@@ -65,13 +65,12 @@ export async function getAll(pageNumber: number, id?: number, email?: string, na
     const clients: any[] = await Client.findAll(findOptions)
 
     const totalElements = (await Client.count({ where: whereOptions }))
-    console.log("estoy aca!!!")
     const result: PageableModel<ClientModel> = {
-        // content: clients.map(client => convertClient(client)),
-        // totalPages: Math.ceil(totalElements / size),
-        // totalElements: totalElements
+        content: clients.map(client => convertClient(client)),
+        totalPages: Math.ceil(totalElements / size),
+        totalElements: totalElements
     }
-    return null
+    return result
 }
 
 export async function getById(id: number): Promise<ClientModel> {

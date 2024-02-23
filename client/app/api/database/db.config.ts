@@ -1,6 +1,4 @@
 import dotenv from 'dotenv';
-import { UserModel } from '../models/UserModel';
-import { User } from './entities/User';
 // Se inicia el enviroment
 dotenv.config();
 
@@ -21,14 +19,3 @@ export const dbConfig: any = {
     },
   },
 };
-
-// Funcion para popular base de datos
-export async function populateDB(): Promise<User[]> {
-  const allowedUsers: UserModel[] = [
-    { email: 'palosantoapptest@gmail.com', canView: true, canEdit: false },
-    { email: 'Marianella.gomezluna@gmail.com', canView: true, canEdit: true },
-    { email: 'gonzalogdv@gmail.com', canView: true, canEdit: true },
-    { email: 'patriciogabrielcolella@gmail.com', canView: true, canEdit: true },
-  ];
-  return await User.bulkCreate(allowedUsers);
-}
