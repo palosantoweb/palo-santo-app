@@ -31,7 +31,7 @@ export const CarouselComponent = ({ session }) => {
 
   const handleRemoveImage = async (name) => {
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}carrousel/${name}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/carrousel/${name}`, {
         method: 'DELETE'
       });
       removeImageCarrousel(name)

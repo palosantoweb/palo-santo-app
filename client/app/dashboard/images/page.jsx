@@ -1,6 +1,6 @@
 import Gallery from "../../ui/components/Gallery";
 import UploadImagesComponent from "../../ui/components/UploadImagesComponent";
-import  CarouselComponent  from "../../ui/components/Gallery";
+import  {CarouselComponent}  from "../../ui/components/Carousel";
 import { getSession } from "@auth0/nextjs-auth0";
 import Link from "next/link";
 

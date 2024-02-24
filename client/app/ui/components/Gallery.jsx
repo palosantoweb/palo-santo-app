@@ -48,7 +48,7 @@ const Gallery = ({session}) => {
 
     const handleRemoveImage = async (name) => {
         try {
-           await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}gallery/${name}`, {
+           await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/gallery/${name}`, {
             method: 'DELETE'
           });
           removeImageGallery(name);
