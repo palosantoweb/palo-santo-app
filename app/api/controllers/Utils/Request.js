@@ -1,12 +1,12 @@
-import { ErrorHandler, RequestError } from "../error/ErrorHandler";
-import { NextResponse } from "next/server";
+export const dynamic = 'force-dynamic'
+import { NextResponse } from "next/server"
 
 /* REQUEST */
 export async function getBody(req) {
     try {
         return (await req.json())
     } catch (error) {
-        throw new RequestError(error, "Error al obtener los datos del body.", 409)
+        throw new Error(error, "Error al obtener los datos del body.")
     }
 }
 
@@ -15,16 +15,21 @@ export function getParamValue(req, key) {
     try {
         return req.params[key]
     } catch (error) {
-        throw new RequestError(error, "Error al obtener los datos de params.", 409)
+        throw new Error("Error al obtener los datos de params.")
     }
 }
 
 // EJ: ?query="23" => 23
 export function getQueryValue(req, key) {
-    try {
-        return req.nextUrl.searchParams.get(key)
+    try {        
+        const { url } = req;
+        const urlSearchParams = new URL(url);
+        console.log(urlSearchParams)
+        const params = Object.fromEntries(urlSearchParams.searchParams.entries());
+        return params[key]
     } catch (error) {
-        throw new RequestError(error, "Error al obtener los datos de query.", 409)
+        console.log("[ERROR]",error)
+        throw new Error("Error al obtener los datos de query.")
     }
 }
 

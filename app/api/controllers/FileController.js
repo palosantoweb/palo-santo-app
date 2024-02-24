@@ -1,7 +1,6 @@
 import { writeFile, readFile, unlink, readdir } from "fs"
 import { promisify } from "util"
 import path from "path";
-import { RequestError } from "./error/ErrorHandler";
 
 let basePath = path.join(process.cwd(), './public/images')
 
@@ -38,7 +37,7 @@ async function read(fileName, dirPrefix) {
         return await promisify(readFile)(`${dir}/${fileName}`, "base64");
     } catch (error) {
         console.log("[UPLOAD READ ERROR]:" + error)
-        throw new RequestError(error, `Ocurrio un error al leer la imagen <${fileName}}>.`, 500)
+        throw new Error(`Ocurrio un error al leer la imagen <${fileName}}>.`)
     }
 }
 
@@ -50,7 +49,7 @@ async function write(file, dirPrefix) {
         return await read(file.name, dirPrefix)
     } catch (error) {
         console.log("[UPLOAD WRITE ERROR]:" + error)
-        throw new RequestError(error, `Ocurrio un error al guardar la imagen <${file.name}}>.`, 500)
+        throw new Error(`Ocurrio un error al guardar la imagen <${file.name}}>.`)
     }
 }
 
@@ -61,6 +60,6 @@ export async function remove(fileName, dirPrefix) {
         await promisify(unlink)(`${dir}/${fileName}`);
         return "Imagen eliminada exitosamente!"
     } catch (error) {
-        throw new RequestError(error, `Ocurrio un error al eliminar la imagen <${fileName}}>.`, 500)
+        throw new Error(`Ocurrio un error al eliminar la imagen <${fileName}}>.`)
     }
 }

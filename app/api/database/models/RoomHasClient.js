@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { Model, DataTypes } from 'sequelize';
 import connection from '../connection';
-import Room from './Room'
-import Client from './Room'
+import Client from './Client';
+import Room from './Room';
 
 const InitRoomHasClient = (sequelize) => {
     class RoomHasClient extends Model {

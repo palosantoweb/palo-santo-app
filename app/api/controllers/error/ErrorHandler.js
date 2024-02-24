@@ -10,6 +10,5 @@ export function ErrorHandler(options) {
     return NextResponse.json({
         message: errorMessage,
         error: options.error.stack,
-        status: options.error.status
     })
 }

@@ -1,5 +1,5 @@
-import { convertClient, unconvertClient } from "./ClientConverter";
-import { convertRoom, unconvertRoom } from "./RoomConverter";
+import { convertClient, unconvertClient } from "./ClientConverter"
+import { convertRoom, unconvertRoom } from "./RoomConverter"
 
 export function convertRoomHasClient(dbRhc, rhc) {
     if (!rhc)

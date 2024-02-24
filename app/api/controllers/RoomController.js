@@ -1,25 +1,13 @@
-import {
-  convertRoomHasClient,
-  unconvertRoomHasClient,
-} from '../converters/RoomHasClientConverter';
-import { RoomHasClient } from '../database/models/RoomHasClient';
-import { RequestError } from './error/ErrorHandler';
+import { convertRoomHasClient, unconvertRoomHasClient } from '../converters/RoomHasClientConverter';
+import RoomHasClient from '../database/models/RoomHasClient';
 
 export async function assignRoomToClient(rhc) {
   // Valido datos
   if (!rhc.client) {
-    throw new RequestError(
-      new Error(),
-      'Debe enviar los datos del cliente.',
-      409
-    );
+    throw new Error('Debe enviar los datos del cliente.');
   }
   if (!rhc.room || !rhc.room.id) {
-    throw new RequestError(
-      new Error(),
-      'Debe enviar los datos de la habitacion.',
-      409
-    );
+    throw new Error('Debe enviar los datos de la habitacion.')
   }
 
   // Corroboro que la habitacion no se encuentre ocupada
@@ -32,11 +20,7 @@ export async function assignRoomToClient(rhc) {
     },
   });
   if (dbRhc)
-    throw new RequestError(
-      new Error(),
-      'La habitacion se encuentra ocupada.',
-      409
-    );
+    throw new Error('La habitacion se encuentra ocupada.')
 
   // Convierto y persisto la entidad
   dbRhc = unconvertRoomHasClient(rhc);

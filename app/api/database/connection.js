@@ -1,17 +1,23 @@
 
 import { Sequelize } from "sequelize";
-import { dbConfig } from "./db.config";
 import pg from 'pg'
+import dotenv from 'dotenv';
+// Se inicia el enviroment
+dotenv.config();
+
+// Variables de entorno
+const { HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
 let sequelize =
     process.env.NODE_ENV === 'production'
         ? new Sequelize({
-            database: dbConfig.DB,
+            database: DB_NAME,
             dialect: 'postgres',
-            host: dbConfig.dbOptions.HOST,
+            host: HOST,
             port: 5432,
-            username: dbConfig.USER,
-            password: dbConfig.PASSWORD,
+            username: DB_USER,
+            password: DB_PASSWORD,
+            dialectModule: pg,
             pool: {
                 max: 3,
                 min: 1,
@@ -27,10 +33,16 @@ let sequelize =
             },
             ssl: true,
         })
-        : new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+        : new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
             dialect: 'postgres',
             dialectModule: pg,
-            ...dbConfig.dbOptions,
+            host: HOST,
+            pool: {
+                max: 5,
+                min: 0,
+                acquire: 30000,
+                idle: 10000,
+            },
         });
 
 const connection = sequelize;

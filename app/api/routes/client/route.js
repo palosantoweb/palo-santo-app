@@ -1,5 +1,6 @@
 import { getAll } from "../../controllers/ClientController";
 import { getQueryValue, handleResponse } from "../../controllers/Utils/Request";
+export const dynamic = 'force-dynamic'
 
 export async function GET(req) {
     return handleResponse(req, getAll(

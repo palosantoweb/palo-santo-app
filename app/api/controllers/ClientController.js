@@ -1,31 +1,30 @@
-import { RequestError } from "./error/ErrorHandler";
-import { convertClient, unconvertClient } from "../converters/ClientConverter";
-import { Op } from "sequelize";
 import Client from "../database/models/Client";
+import { Op } from "sequelize";
+import { convertClient } from "../converters/ClientConverter";
 
 export async function saveUpdate(client, clientId) {
     // Valido datos del cliente
     if (!client.birthDate)
-        throw new RequestError(new Error(), "Debe enviar la fecha de nacimiento del cliente.", 419);
+        throw new Error("Debe enviar la fecha de nacimiento del cliente.");
 
     if (!client.email)
-        throw new RequestError(new Error(), "Debe enviar el email.", 419);
+        throw new Error("Debe enviar el email.");
 
     if (!client.name)
-        throw new RequestError(new Error(), "Debe enviar el nombre del cliente.", 419);
+        throw new Error("Debe enviar el nombre del cliente.");
 
     if (!client.nationality)
-        throw new RequestError(new Error(), "Debe enviar la nacionalidad del cliente.", 419);
+        throw new Error("Debe enviar la nacionalidad del cliente.");
 
     if (!client.phoneNumber)
-        throw new RequestError(new Error(), "Debe enviar el numero de telefono del cliente.", 419);
+        throw new Error("Debe enviar el numero de telefono del cliente.");
 
     // Instancio y creo el cliente en la base
     let dbClient = null;
     if (clientId) {
         dbClient = await Client.findByPk(Number(clientId))
         if (!dbClient)
-            throw new RequestError(new Error(), "No se encontró el cliente a modificar.", 419);
+            throw new Error("No se encontró el cliente a modificar.");
     }
     if (clientId) {
         await Client.update(client, { where: { id: Number(clientId) } })
@@ -72,6 +71,6 @@ export async function getAll(pageNumber, id, email, name, nationality, phoneNumb
 export async function getById(id) {
     const dbClient = await Client.findByPk(id)
     if (!dbClient)
-        throw new RequestError(new Error(), `No se encontró el cliente con identficacion >${id}<.`, 419);
+        throw new Error(`No se encontró el cliente con identficacion >${id}<.`);
     return convertClient(dbClient);
 }
