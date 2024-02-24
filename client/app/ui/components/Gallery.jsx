@@ -1,7 +1,7 @@
 'use client'
-import { useImages } from "@/app/context/ImagesContext";
-import { fixBase64Format } from "@/app/utils/CorrectBase64";
-import { fetcher } from "@/app/utils/fetcher";
+import { useImages } from "../../context/ImagesContext";
+import { fixBase64Format } from "../../utils/CorrectBase64";
+import { fetcher } from "../../utils/fetcher";
 import { Spinner } from "keep-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";

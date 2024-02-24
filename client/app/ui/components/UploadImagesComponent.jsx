@@ -1,7 +1,7 @@
 'use client'
 
-import { useImages } from "@/app/context/ImagesContext";
-import { fetcher } from "@/app/utils/fetcher";
+import { useImages } from "../../context/ImagesContext";
+import { fetcher } from "../../utils/fetcher";
 import Image from "next/image";
 import { useState } from "react";
 
