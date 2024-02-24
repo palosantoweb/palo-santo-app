@@ -17,7 +17,8 @@ module.exports = {
         'source ~/.nvm/nvm.sh && npm install && npm run build && pm2 reload ecosystem.config.js --env production',
       'pre-setup': '',
       ssh_options: 'ForwardAgent=yes',
-      password: '5xpmvTU2rC6k',
+      // password: '5xpmvTU2rC6k',
+      password: 'wd5UqReGtaj4',
     },
   },
 };
