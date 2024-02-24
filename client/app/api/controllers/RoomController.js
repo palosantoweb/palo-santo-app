@@ -1,9 +1,8 @@
 import { convertRoomHasClient, unconvertRoomHasClient } from "../converters/RoomHasClientConverter";
 import { RoomHasClient } from "../database/entities/RoomHasClient";
-import { RoomHasClientModel } from "../models/RoomHasClientModel";
 import { RequestError } from "./error/ErrorHandler";
 
-export async function assignRoomToClient(rhc: RoomHasClientModel): Promise<RoomHasClientModel> {
+export async function assignRoomToClient(rhc) {
     // Valido datos
     if (!rhc.client) {
         throw new RequestError(new Error(), "Debe enviar los datos del cliente.", 409)
@@ -26,7 +25,7 @@ export async function assignRoomToClient(rhc: RoomHasClientModel): Promise<RoomH
 
     // Convierto y persisto la entidad
     dbRhc = unconvertRoomHasClient(rhc)
-    dbRhc = await RoomHasClient.create(dbRhc.dataValues)
+    dbRhc = await RoomHasClient.create(dbRhc)
 
     return convertRoomHasClient(dbRhc);
 }

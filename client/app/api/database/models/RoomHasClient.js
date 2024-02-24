@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { Model, InferAttributes, Sequelize, DataTypes, CreationOptional, InferCreationAttributes } from 'sequelize';
+import { Model, DataTypes } from 'sequelize';
 import connection from '../connection';
-import Room from '../models/Room'
-import Client from '../models/Room'
+import Room from './Room'
+import Client from './Room'
 
-const InitRoomHasClient = (sequelize: Sequelize) => {
-    class RoomHasClient extends Model<InferAttributes<RoomHasClient>, InferCreationAttributes<RoomHasClient>> {
-        declare id: CreationOptional<number>;
-        declare room: typeof Room;
-        declare client: typeof Client;
-        declare status: CreationOptional<string>;
+const InitRoomHasClient = (sequelize) => {
+    class RoomHasClient extends Model {
+        id;
+        room;
+        client;
+        status;
     }
 
     RoomHasClient.init({

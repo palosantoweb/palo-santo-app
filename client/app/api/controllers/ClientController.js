@@ -1,11 +1,9 @@
 import { RequestError } from "./error/ErrorHandler";
-import { ClientModel } from "../models/ClientModel";
 import { convertClient, unconvertClient } from "../converters/ClientConverter";
-import { FindOptions, Op, WhereOptions } from "sequelize";
-import { PageableModel } from "../models/PageableModel";
+import { Op } from "sequelize";
 import Client from "../database/models/Client";
 
-export async function saveUpdate(client: ClientModel, clientId?: number): Promise<ClientModel> {
+export async function saveUpdate(client, clientId) {
     // Valido datos del cliente
     if (!client.birthDate)
         throw new RequestError(new Error(), "Debe enviar la fecha de nacimiento del cliente.", 419);
@@ -23,35 +21,33 @@ export async function saveUpdate(client: ClientModel, clientId?: number): Promis
         throw new RequestError(new Error(), "Debe enviar el numero de telefono del cliente.", 419);
 
     // Instancio y creo el cliente en la base
-    let dbClient: any | null = null;
+    let dbClient = null;
     if (clientId) {
-        dbClient = await Client.findByPk(clientId)
+        dbClient = await Client.findByPk(Number(clientId))
         if (!dbClient)
             throw new RequestError(new Error(), "No se encontró el cliente a modificar.", 419);
     }
-    dbClient = unconvertClient(client, dbClient);
-
     if (clientId) {
-        await Client.update(dbClient.dataValues, { where: { id: clientId } })
+        await Client.update(client, { where: { id: Number(clientId) } })
     } else {
-        dbClient = await Client.create(dbClient.dataValues)
+        dbClient = await Client.create(dbClient)
     }
 
     return convertClient(dbClient);
 }
 
-export async function getAll(pageNumber: number, id?: number, email?: string, name?: string, nationality?: string, phoneNumber?: number, birthDate?: Date): Promise<PageableModel<ClientModel>> {
-    const whereOptions: WhereOptions<any> = {}
-    const size: number = 10
+export async function getAll(pageNumber, id, email, name, nationality, phoneNumber, birthDate) {
+    const whereOptions = {}
+    const size = 10
 
     if (id) whereOptions.id = id
     if (email) whereOptions.email = { [Op.like]: `%${email}%` }
     if (name) whereOptions.name = { [Op.like]: `%${name}%` }
     if (nationality) whereOptions.nationality = { [Op.like]: `%${nationality}%` }
-    if (phoneNumber) whereOptions.phoneNumber = phoneNumber
+    if (phoneNumber) whereOptions.phoneNumber = { [Op.like]: `%${name}%` }
     if (birthDate) whereOptions.birthDate = birthDate
 
-    let findOptions: FindOptions<any> = {
+    let findOptions = {
         where: whereOptions,
         order: [["name", "DESC"]]
     }
@@ -62,10 +58,10 @@ export async function getAll(pageNumber: number, id?: number, email?: string, na
             offset: size * pageNumber
         }
     }
-    const clients: any[] = await Client.findAll(findOptions)
+    const clients = await Client.findAll(findOptions)
 
     const totalElements = (await Client.count({ where: whereOptions }))
-    const result: PageableModel<ClientModel> = {
+    const result = {
         content: clients.map(client => convertClient(client)),
         totalPages: Math.ceil(totalElements / size),
         totalElements: totalElements
@@ -73,7 +69,7 @@ export async function getAll(pageNumber: number, id?: number, email?: string, na
     return result
 }
 
-export async function getById(id: number): Promise<ClientModel> {
+export async function getById(id) {
     const dbClient = await Client.findByPk(id)
     if (!dbClient)
         throw new RequestError(new Error(), `No se encontró el cliente con identficacion >${id}<.`, 419);

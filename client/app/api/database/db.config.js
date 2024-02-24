@@ -5,7 +5,7 @@ dotenv.config();
 // Variables de entorno
 const { HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
-export const dbConfig: any = {
+export const dbConfig = {
   DB: DB_NAME,
   USER: DB_USER,
   PASSWORD: DB_PASSWORD,

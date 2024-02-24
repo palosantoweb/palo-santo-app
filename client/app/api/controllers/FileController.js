@@ -1,4 +1,3 @@
-import { FileModel } from "../models/FileModel";
 import { writeFile, readFile, unlink, readdir } from "fs"
 import { promisify } from "util"
 import path from "path";
@@ -6,7 +5,7 @@ import { RequestError } from "./error/ErrorHandler";
 
 let basePath = path.join(process.cwd(), './public/images')
 
-export async function saveUpdate(files: FileModel[], dirPrefix: string): Promise<FileModel[]> {
+export async function saveUpdate(files, dirPrefix) {
     let promises = files.map(async file => await write(file, dirPrefix))
     await Promise.all(promises)
     const oldFiles = await getAllImages(dirPrefix)
@@ -18,7 +17,7 @@ export async function saveUpdate(files: FileModel[], dirPrefix: string): Promise
     return files;
 }
 
-export async function getAllImages(dirPrefix: string): Promise<FileModel[]> {
+export async function getAllImages(dirPrefix) {
     const dir = basePath + dirPrefix
     // Obtengo todas las direcciones de las imagenes
     const dirFiles = (await promisify(readdir)(dir))
@@ -33,7 +32,7 @@ export async function getAllImages(dirPrefix: string): Promise<FileModel[]> {
 }
 
 // Generic read
-async function read(fileName: string, dirPrefix: string) {
+async function read(fileName, dirPrefix) {
     const dir = basePath + dirPrefix
     try {
         return await promisify(readFile)(`${dir}/${fileName}`, "base64");
@@ -44,7 +43,7 @@ async function read(fileName: string, dirPrefix: string) {
 }
 
 // Generic write
-async function write(file: FileModel, dirPrefix: string) {
+async function write(file, dirPrefix) {
     const dir = basePath + dirPrefix
     try {
         await promisify(writeFile)(`${dir}/${file.name}`, file.base64, { encoding: "base64" });
@@ -56,7 +55,7 @@ async function write(file: FileModel, dirPrefix: string) {
 }
 
 // Generic remove
-export async function remove(fileName: string, dirPrefix: string): Promise<string> {
+export async function remove(fileName, dirPrefix) {
     const dir = basePath + dirPrefix
     try {
         await promisify(unlink)(`${dir}/${fileName}`);

@@ -1,9 +1,6 @@
-import Client from "../database/models/Client";
-import { ClientModel } from "../models/ClientModel";
-
-export function convertClient(dbClient: any, client?: ClientModel): ClientModel {
+export function convertClient(dbClient, client) {
     if (!client)
-        client = new ClientModel()
+        client = {}
     client.id = dbClient.id
     client.email = dbClient.email
     client.birthDate = dbClient.birthDate
@@ -14,9 +11,9 @@ export function convertClient(dbClient: any, client?: ClientModel): ClientModel 
     return client
 }
 
-export function unconvertClient(client: ClientModel, dbClient?: any | null): any {
+export function unconvertClient(client, dbClient) {
     if (!dbClient)
-        dbClient = new Client()
+        dbClient = {}
     if (client.id)
         dbClient.id = client.id
     if (client.email)
