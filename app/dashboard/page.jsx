@@ -11,6 +11,7 @@ const Dashboard = async ({searchParams}) => {
     const currentPage = Number(searchParams.page) 
     const session = await getSession();
     const userData = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
+    console.log(userData);
     const clientData = await fetchedClients(query, currentPage)
     const totalPages = clientData.totalPages
 
