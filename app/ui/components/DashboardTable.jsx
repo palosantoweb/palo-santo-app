@@ -4,12 +4,12 @@ import Link from "next/link";
 
 
 
-const DashboardTable = ({ session, userData, clientData }) => {
+const DashboardTable = ({ session, clientData }) => {
 
 
     return (
         <>
-            {userData.email === session ? (
+            {session ? (
                 <>
                     <div className="rounded-sm hidden md:block shadow">
                         <table className="text-sm rounded md:table">
