@@ -6,13 +6,20 @@ import SearchBar from "../ui/components/SearchBar";
 import ExportToExcel from "../ui/components/ExportToExcel";
 import Pagination from "../ui/components/Pagination";
 
-const Dashboard = async ({searchParams}) => {
+const Dashboard = async ({ searchParams }) => {
     const query = searchParams.search || ''
-    const currentPage = Number(searchParams.page) 
+    const currentPage = Number(searchParams.page)
     const session = await getSession();
-    const userData = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
-    console.log(userData);
-    const clientData = await fetchedClients(query, currentPage)
+    const userData = {
+        id: 4,
+        email: "patriciogabrielcolella@gmail.com",
+        canEdit: true,
+        canView: true
+    }
+
+    //const userData2 = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
+    //console.log(userData2);
+    const clientData = [];//await fetchedClients(query, currentPage)
     const totalPages = clientData.totalPages
 
 
@@ -28,7 +35,7 @@ const Dashboard = async ({searchParams}) => {
             </div>
 
             <DashboardTable clientData={clientData} session={session.user.email} userData={userData} />
-            <Pagination totalPages={totalPages} currentPage={currentPage}/>
+            <Pagination totalPages={totalPages} currentPage={currentPage} />
         </div>
 
     </div>);
