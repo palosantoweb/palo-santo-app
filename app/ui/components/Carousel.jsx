@@ -18,7 +18,7 @@ export const CarouselComponent = () => {
     const fetchData = async () => {
       try {
         const carouselImages = await fetcher(`carrousel`);
-        const carouselImagesFormatted = await carouselImages.length > 0 ? fixBase64Format(carouselImages) : []
+        const carouselImagesFormatted = await carouselImages.data.length > 0 ? fixBase64Format(carouselImages.data) : []
         updateImagesCarrousel(carouselImagesFormatted)
         setLoading(false)
       } catch (error) {
@@ -46,7 +46,7 @@ export const CarouselComponent = () => {
 
   return (
     <div className="mb-6 md:mb-12">
-      {!session && imageCarrousel.length > 0  ? (
+      { !session  && imageCarrousel.length > 0  ? (
         <Carousel slideInterval={5000} showControls={true} indicators={true}>
           {imageCarrousel.map(({ name, base64 }) => (
             <div key={name}>
@@ -56,7 +56,7 @@ export const CarouselComponent = () => {
         </Carousel>)
          :
         <></>}
-      { session && (
+      { session && session.user.email && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
           {imageCarrousel.length > 0 && imageCarrousel.map(({ name, base64 }) => (
             <div key={name} className="overflow-hidden rounded-lg shadow-md">
