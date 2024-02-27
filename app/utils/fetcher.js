@@ -6,9 +6,7 @@ export const fetcher = async (url, options) => {
     try {
         console.log(`${BASE_URL}/${url}`)
         const obj=  await fetch(`${BASE_URL}/${url}`,options);
-        console.log({obj})
         const objParsed = await obj.json();
-        console.log({objParsed})
 
         return objParsed
     } catch (error) {
