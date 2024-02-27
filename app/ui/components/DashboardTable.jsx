@@ -16,8 +16,7 @@ const DashboardTable = ({ clientData }) => {
         const fetchUser = async () => {
             if (session) {
                 const userDataFetch = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
-                console.log('aaaa', userDataFetch)
-                setUserData(userDataFetch)
+                setUserData(userDataFetch.data)
             }
 
         }
@@ -30,7 +29,7 @@ const DashboardTable = ({ clientData }) => {
 
     return (
         <>
-            {userData && userData.email === session.user.email ? (
+            {session && session.user.email ? (
                 <>
                     <div className="rounded-sm hidden md:block shadow">
                         <table className="text-sm rounded md:table">
