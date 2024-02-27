@@ -5,10 +5,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fetcher } from "../../utils/fetcher";
 import { useImages } from "../../context/ImagesContext";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 const imageCarrousel = []
 
-export const CarouselComponent = ({ session }) => {
+export const CarouselComponent = () => {
+  const { data: session } = useSession()
   const [loading, setLoading] = useState(true)
   const { imageCarrousel, updateImagesCarrousel, removeImageCarrousel } = useImages();
 

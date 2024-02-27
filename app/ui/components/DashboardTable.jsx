@@ -1,15 +1,36 @@
 'use client'
 import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useEffect, useState } from "react";
+import { fetcher } from "../../utils/fetcher";
 
 
 
 
-const DashboardTable = ({ session, userData, clientData }) => {
+
+const DashboardTable = ({ clientData }) => {
+    const { data: session} = useSession()
+    const [userData, setUserData] = useState();
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            if (session) {
+                const userDataFetch = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
+                console.log('aaaa', userDataFetch)
+                setUserData(userDataFetch)
+            }
+
+        }
+        fetchUser();
+
+    }, [])
+
+    console.log(userData)
 
 
     return (
         <>
-            {userData.email === session ? (
+            {userData && userData.email === session.user.email ? (
                 <>
                     <div className="rounded-sm hidden md:block shadow">
                         <table className="text-sm rounded md:table">

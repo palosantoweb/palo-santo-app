@@ -1,17 +1,17 @@
-'use server'
+'use client'
 import Image from 'next/image'
 import photoOne from '../public/photo-1.svg';
 import photoTwo from '../public/photo-2.svg';
 import Link from 'next/link';
 import { GoArrowRight } from "react-icons/go";
 import { redirect } from 'next/navigation';
-import { getSession } from '@auth0/nextjs-auth0';
+import { useSession, signIn, signOut } from "next-auth/react"
 import Banner from './ui/components/Banner';
 
-export default async function Home() {
-  const session = await getSession();
+export default function Home() {
+  const { data: session } = useSession()
 
-    if(session?.user){
+    if(session){
         redirect('/dashboard')
     }
 
