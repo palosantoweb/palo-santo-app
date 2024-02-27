@@ -10,13 +10,12 @@ const Dashboard = async ({searchParams}) => {
     const query = searchParams.search || ''
     const currentPage = Number(searchParams.page) 
     const session = await getSession();
-    const userData = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
-    console.log(userData);
+   // const userData = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
     const clientData = await fetchedClients(query, currentPage)
     const totalPages = clientData.totalPages
 
 
-    return (<div className="h-full flex flex-col justify-between items-center">
+    return (<div className="min-h-screen flex flex-col justify-between items-center">
         <div className="flex gap-16">
             <button className="bg-[#CC8942] px-7 py-4 mt-7 text-white rounded-sm"><Link href="/dashboard/create"> Crear Cliente </Link></button>
             <button className="bg-[#CC8942] px-7 py-4 mt-7 text-white rounded-sm"><Link href="/dashboard/images"> Subir imágenes </Link></button>
