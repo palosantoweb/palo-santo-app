@@ -19,9 +19,9 @@ const UploadClient = ({ responseDataCountries, mode, id }) => {
                 try {
                     if (mode === 'modify') {
                         const clientData = await fetcher(`client/${id}`, { cache: "no-store" });
-                        setResponseData(clientData.data)
+                        setResponseData(clientData)
     
-                        resolve(clientData.data);
+                        resolve(clientData);
                     } else {
                         resolve(null); 
                     }

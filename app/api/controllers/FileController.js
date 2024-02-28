@@ -7,12 +7,6 @@ let basePath = path.join(process.cwd(), './public/images')
 export async function saveUpdate(files, dirPrefix) {
     let promises = files.map(async file => await write(file, dirPrefix))
     await Promise.all(promises)
-    const oldFiles = await getAllImages(dirPrefix)
-    oldFiles.forEach(async f => {
-        if (files.findIndex(_f => _f.name === f.name) === -1) {
-            await remove(f.name, dirPrefix)
-        }
-    })
     return files;
 }
 

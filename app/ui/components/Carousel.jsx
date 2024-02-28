@@ -18,7 +18,7 @@ export const CarouselComponent = () => {
     const fetchData = async () => {
       try {
         const carouselImages = await fetcher(`carrousel`);
-        const carouselImagesFormatted = await carouselImages.data.length > 0 ? fixBase64Format(carouselImages.data) : []
+        const carouselImagesFormatted = await carouselImages.length > 0 ? fixBase64Format(carouselImages) : []
         updateImagesCarrousel(carouselImagesFormatted)
         setLoading(false)
       } catch (error) {

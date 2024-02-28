@@ -20,8 +20,9 @@ const Gallery = () => {
 
         const getImages= async () =>{
             try{
-            const galleryImages = await fetcher(`gallery`)
-            const galleryFormatted = fixBase64Format(galleryImages.data)
+            const galleryImages = await fetcher(`gallery`, {cache:"no-store"})
+            console.log("galleryImages", {galleryImages})
+            const galleryFormatted = fixBase64Format(galleryImages)
             updateImagesGallery(galleryFormatted)
             setLoading(false)
             }catch(error){

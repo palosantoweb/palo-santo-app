@@ -16,7 +16,7 @@ const DashboardTable = ({ clientData }) => {
         const fetchUser = async () => {
             if (session) {
                 const userDataFetch = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
-                setUserData(userDataFetch.data)
+                setUserData(userDataFetch)
             }
 
         }
