@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import PS from "../../../public/ps.svg"
 import { UserProfile } from "./User-Profile";
-import { getSession } from "@auth0/nextjs-auth0";
+import { useSession, signIn, signOut } from "next-auth/react"
 
-const Footer = async() => {
+const Footer = () => {
+  const { data: session } = useSession()
 
-  const session = await getSession();
 
     
     const links=[
@@ -43,10 +43,10 @@ const Footer = async() => {
         })
       }
       {
-        session?.user ?  <UserProfile session={session}/>
+        session?.user ?  <UserProfile session={session} signOut={signOut}/>
         :
         <div className='flex items-end ml-6 mr-6'>
-        <a href="/api/auth/login" className='text-[#CC8942] text-sm whitespace-nowrap'>Soy administrador</a>
+        <button onClick={()=>signIn('github')} className='text-[#CC8942] text-sm whitespace-nowrap'>Soy administrador</button>
         </div>
       }
 

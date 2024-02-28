@@ -7,7 +7,7 @@ const ExportToExcel = () => {
     
     const fetchingData = async() =>{
         const resp = await fetcher('/client', {method: 'GET'})
-        return resp
+        return resp;
     }
 
     const handleExportExcel = async() => {

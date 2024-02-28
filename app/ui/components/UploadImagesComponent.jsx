@@ -4,11 +4,15 @@ import { useImages } from "../../context/ImagesContext";
 import { fetcher } from "../../utils/fetcher";
 import Image from "next/image";
 import { useState } from "react";
+import { useSession, signIn, signOut } from "next-auth/react"
+
 
 const UploadImagesComponent = () => {
     const [imageFiles, setImageFiles] = useState([]);
     const [selectedOption, setSelectedOption] = useState("");
     const { updateImagesCarrousel, removeImageCarrousel, updateImagesGallery, removeImageGallery } = useImages();
+    const { data: session } = useSession()
+
 
     const handleImageUpload = async (e) => {
         const newFiles = [...imageFiles];
@@ -61,11 +65,12 @@ const UploadImagesComponent = () => {
                 },
                 body: JSON.stringify(imageFiles)
             });
-            if (response && selectedOption === 'gallery') {
+            if (response && selectedOption === 'gallery' || !response && selectedOption==='gallery') {
                 updateImagesGallery(imageFiles)
                 setImageFiles([])
             }else{
                 updateImagesCarrousel(imageFiles)
+                setImageFiles([])
             }
 
         };
@@ -76,6 +81,7 @@ const UploadImagesComponent = () => {
 
 
     return (
+        session && (
         <div className="container mx-auto my-8 flex flex-col items-center justify-center">
             <div className="flex flex-col justify-between items-center mb-4">
                 <span className="text-4xl font-semibold mb-6 text-[#CC8942]">
@@ -132,7 +138,7 @@ const UploadImagesComponent = () => {
                 Subir Imagenes
             </button>
         </div>
-    );
+    ));
 };
 
 

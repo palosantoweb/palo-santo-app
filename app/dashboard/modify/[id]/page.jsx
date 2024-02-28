@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const ModifyClient = async ({ params }) => {
     const id = params.id
-    const clientData = await fetcher(`client/${id}`, {cache: "no-store"})
     const response = await fetch(`https://restcountries.com/v3.1/all`, { method: 'GET' })
     const responseDataCountries = await response.json()
 
@@ -16,7 +15,7 @@ const ModifyClient = async ({ params }) => {
             </p>
         </div>
         <div className=" mt-2 flex flex-col items-center justify-center">
-        <UploadClient clientData={clientData} responseDataCountries={responseDataCountries} mode="modify" id={id} />
+        <UploadClient responseDataCountries={responseDataCountries} mode="modify" id={id} />
         </div>
     </div>);
 }

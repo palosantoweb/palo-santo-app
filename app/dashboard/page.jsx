@@ -1,6 +1,5 @@
 import Link from "next/link";
 import DashboardTable from "../ui/components/DashboardTable";
-import { getSession } from "@auth0/nextjs-auth0";
 import { fetchedClients, fetcher } from "../utils/fetcher";
 import SearchBar from "../ui/components/SearchBar";
 import ExportToExcel from "../ui/components/ExportToExcel";
@@ -9,9 +8,7 @@ import Pagination from "../ui/components/Pagination";
 const Dashboard = async ({searchParams}) => {
     const query = searchParams.search || ''
     const currentPage = Number(searchParams.page) 
-    const session = await getSession();
-   // const userData = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
-    const clientData = await fetchedClients(query, currentPage)
+    const clientData = await fetchedClients(query, currentPage, { cache:"no-store" })
     const totalPages = clientData.totalPages
 
 
@@ -26,7 +23,7 @@ const Dashboard = async ({searchParams}) => {
                 <SearchBar />
             </div>
 
-            <DashboardTable clientData={clientData} session={session.user.email} userData={userData} />
+            <DashboardTable clientData={clientData} />
             <Pagination totalPages={totalPages} currentPage={currentPage}/>
         </div>
 

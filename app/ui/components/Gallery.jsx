@@ -5,9 +5,12 @@ import { fetcher } from "../../utils/fetcher";
 import { Spinner } from "keep-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 
-const Gallery = ({session}) => {
+
+const Gallery = () => {
+    const { data: session } = useSession()
     const [isModalOpen, setModalOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const {imageGallery, updateImagesGallery, removeImageGallery} = useImages();
@@ -17,7 +20,8 @@ const Gallery = ({session}) => {
 
         const getImages= async () =>{
             try{
-            const galleryImages = await fetcher(`gallery`)
+            const galleryImages = await fetcher(`gallery`, {cache:"no-store"})
+            console.log("galleryImages", {galleryImages})
             const galleryFormatted = fixBase64Format(galleryImages)
             updateImagesGallery(galleryFormatted)
             setLoading(false)
@@ -57,12 +61,14 @@ const Gallery = ({session}) => {
         }
       };
     if(loading) return <Spinner />
+
+
     return (<>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
             {imageGallery.length > 0 && imageGallery.map(({name, base64},index) => (
                 <div key={name} className="overflow-hidden rounded-lg shadow-md " onClick={() => openModal(index)}>
                     <Image src={base64} alt={name} width={250} height={250} style={{ objectFit: 'cover', layout: 'responsive', width: '250px', height: '250px' }} />
-                    {session && <button onClick={() => handleRemoveImage(name)} className="w-full py-2 bg-red-500 text-white font-semibold rounded-b-md"
+                    {session && session.user.email && <button onClick={() => handleRemoveImage(name)} className="w-full py-2 bg-red-500 text-white font-semibold rounded-b-md"
               >
                 Eliminar imagen
               </button>}

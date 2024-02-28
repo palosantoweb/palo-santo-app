@@ -1,10 +1,10 @@
 import './globals.css'
 import Container from './ui/components/Container'
-import { UserProvider } from '@auth0/nextjs-auth0/client';
 import localFont from "next/font/local"
 import { FormProvider } from './context/FormContext';
 import { ToastContainer } from 'react-toastify';
 import { ImagesProvider } from './context/ImagesContext';
+import SessionWrapper from './ui/components/SesssionWrapper';
 
 
 export const metadata = {
@@ -111,8 +111,8 @@ const bozon = localFont({
 export default function RootLayout({ children }) {
 
   return (
+    <SessionWrapper>
     <html lang="es" className={`${bozon.variable} font-sans`}>
-      <UserProvider>
         <FormProvider>
           <ImagesProvider>
               <body suppressHydrationWarning={true}>
@@ -133,7 +133,8 @@ export default function RootLayout({ children }) {
               </body>
           </ImagesProvider>
         </FormProvider>
-      </UserProvider>
     </html>
+    </SessionWrapper>
+
   )
 }

@@ -1,17 +1,18 @@
-import { getSession } from "@auth0/nextjs-auth0";
+'use client'
 import { CarouselComponent } from "./Carousel";
 import Footer from "./Footer";
 import NavbarComponent from "./Navbar";
+import { useSession } from "next-auth/react"
 
 
-const Container = async({children}) => {
+const Container = ({children}) => {
 
-    const session = await getSession();
+    const { data: session } = useSession()
 
     
     return (  <>
     <NavbarComponent/>
-    { !session?.user ? <CarouselComponent /> : <></>}
+    { !session ? <CarouselComponent /> : <></>}
     {children}
     <Footer session={session}/>
     </>);
