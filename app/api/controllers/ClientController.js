@@ -29,7 +29,7 @@ export async function saveUpdate(client, clientId) {
     if (clientId) {
         await Client.update(client, { where: { id: Number(clientId) } })
     } else {
-        dbClient = await Client.create(dbClient)
+        dbClient = await Client.create(client)
     }
 
     return convertClient(dbClient);

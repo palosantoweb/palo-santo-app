@@ -8,7 +8,7 @@ import Pagination from "../ui/components/Pagination";
 const Dashboard = async ({searchParams}) => {
     const query = searchParams.search || ''
     const currentPage = Number(searchParams.page) 
-    const clientData = await fetchedClients(query, currentPage)
+    const clientData = await fetchedClients(query, currentPage, { cache:"no-store" })
     const totalPages = clientData.totalPages
 
 
