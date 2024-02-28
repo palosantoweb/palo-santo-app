@@ -12,7 +12,7 @@ const handler = NextAuth({
             clientSecret: process.env.GITHUB_SECRET 
         })
     ],
-    secret: process.env.NEXT_PUBLIC_SECRET
+    secret: process.env.NEXTAUTH_SECRET
 })
 
 export { handler as GET, handler as POST }
