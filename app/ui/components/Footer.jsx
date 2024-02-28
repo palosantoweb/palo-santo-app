@@ -46,7 +46,7 @@ const Footer = () => {
         session?.user ?  <UserProfile session={session} signOut={signOut}/>
         :
         <div className='flex items-end ml-6 mr-6'>
-        <button onClick={()=>signIn('github')} className='text-[#CC8942] text-sm whitespace-nowrap'>Soy administrador</button>
+        <button onClick={()=>signIn('github', { redirect:window.origin })} className='text-[#CC8942] text-sm whitespace-nowrap'>Soy administrador</button>
         </div>
       }
 
