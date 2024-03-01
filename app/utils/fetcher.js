@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? `${process.env.NEXT_PUBLIC_BASE_URL}api/routes` : process.env.NEXT_PUBLIC_BASE_URL
+const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_BASE_URL : process.env.NEXT_PUBLIC_BASE_URL_DEV
 
 
 export const fetcher = async (url, options) => {
@@ -9,23 +9,23 @@ export const fetcher = async (url, options) => {
         let method = options ? options.method : "GET"
         switch (method) {
             case "GET": {
-                res = await axios.get(`${BASE_URL}/${url}`, { headers: options?.headers });
+                res = await axios.get(`${BASE_URL}${url}`, { headers: options?.headers });
                 break;
             }
             case "POST": {
-                res = await axios.post(`${BASE_URL}/${url}`, options?.body, { headers: options?.headers });
+                res = await axios.post(`${BASE_URL}${url}`, options?.body, { headers: options?.headers });
                 break;
             }
             case "PUT": {
-                res = await axios.put(`${BASE_URL}/${url}`, options?.body, { headers: options?.headers });
+                res = await axios.put(`${BASE_URL}${url}`, options?.body, { headers: options?.headers });
                 break;
             }
             case "DELETE": {
-                res = await axios.delete(`${BASE_URL}/${url}`, { headers: options?.headers });
+                res = await axios.delete(`${BASE_URL}${url}`, { headers: options?.headers });
                 break;
             }
             default: {
-                res = await axios.get(`${BASE_URL}/${url}`);
+                res = await axios.get(`${BASE_URL}${url}`);
                 break;
             }
         }
@@ -38,7 +38,7 @@ export const fetcher = async (url, options) => {
 export const fetchedClients = async (query, currentPage, options) => {
     try {
         console.log("FETCHED")
-        const response = await fetch(`${BASE_URL}/client${currentPage ? `?pageNumber=${currentPage}` : `?pageNumber=0`}${query ? `&name=${query}` : ''}`, options);
+        const response = await fetch(`${BASE_URL}client${currentPage ? `?pageNumber=${currentPage}` : `?pageNumber=0`}${query ? `&name=${query}` : ''}`, options);
         console.log("FETCHED RES", response)
         const json = await response.json()
         console.log("FETCHED RESJSON", json)

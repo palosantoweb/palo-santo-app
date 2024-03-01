@@ -52,12 +52,13 @@ const Gallery = () => {
 
     const handleRemoveImage = async (name) => {
         try {
-           await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/gallery/${name}`, {
+           await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}gallery/${name}`, {
             method: 'DELETE'
           });
           removeImageGallery(name);
         } catch (error) {
           console.error("Error deleting image:", error);
+          toast.error('Ha ocurrido un error, por favor intente nuevamente')
         }
       };
     if(loading) return <Spinner />

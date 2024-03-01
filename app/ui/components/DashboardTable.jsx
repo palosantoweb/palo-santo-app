@@ -24,7 +24,6 @@ const DashboardTable = ({ clientData }) => {
 
     }, [])
 
-    console.log(userData)
 
 
     return (
