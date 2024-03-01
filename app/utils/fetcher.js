@@ -37,11 +37,8 @@ export const fetcher = async (url, options) => {
 
 export const fetchedClients = async (query, currentPage, options) => {
     try {
-        console.log("FETCHED")
         const response = await fetch(`${BASE_URL}client${currentPage ? `?pageNumber=${currentPage}` : `?pageNumber=0`}${query ? `&name=${query}` : ''}`, options);
-        console.log("FETCHED RES", response)
         const json = await response.json()
-        console.log("FETCHED RESJSON", json)
         return json
     } catch (error) {
         throw new Error(`Error en la solicitud: ${error.message}`);

@@ -12,4 +12,5 @@ module.exports = {
       },
     ],
   },
+  serverActions: { allowedOrigins: ["palosantoapartments.com.ar", "localhost:3000"], }
 };
