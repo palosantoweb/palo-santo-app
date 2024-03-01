@@ -12,4 +12,9 @@ module.exports = {
       },
     ],
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ["palosantoapartments.com.ar", "127.0.0.1:3000"]
+    }
+  }
 };
