@@ -26,7 +26,7 @@ const Pagination = ({ totalPages }) => {
             >
                 Anterior
             </Link>
-            <span>{`Página ${finalPage += 1}`}</span>
+            <span className="mx-2">{`Página ${finalPage += 1}`}</span>
             <Link
                 className={`border-2 border-[#CC8942] p-2 rounded ${finalPage >= totalPages ? 'cursor-not-allowed opacity-50 pointer-events-none' : ''}`}
                 href={finalPage >= totalPages ? createPageURL(currentPage) : createPageURL(currentPage + 1)}
