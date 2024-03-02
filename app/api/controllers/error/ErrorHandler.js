@@ -7,7 +7,7 @@ export function ErrorHandler(options) {
     message += `:\n${errorMessage}`
     console.log(message)
     console.log(options.error?.stack)
-    return NextResponse.json({
+    return NextResponse.status(400).json({
         message: errorMessage,
         error: options.error.stack,
     })
