@@ -14,8 +14,8 @@ const Dashboard = async ({searchParams}) => {
 
     return (<div className="flex flex-col justify-between items-center">
         <div className="flex gap-16">
-            <button className="bg-[#CC8942] px-7 py-4 mt-7 text-white rounded-sm"><Link href="/dashboard/create"> Crear Cliente </Link></button>
-            <button className="bg-[#CC8942] px-7 py-4 mt-7 text-white rounded-sm"><Link href="/dashboard/images"> Subir imágenes </Link></button>
+            <button className="bg-[#CC8942] px-7 py-4 mt-7 text-white rounded"><Link href="/dashboard/create"> Crear Cliente </Link></button>
+            <button className="bg-[#CC8942] px-7 py-4 mt-7 text-white rounded"><Link href="/dashboard/images"> Subir imágenes </Link></button>
         </div>
         <div className="mt-10">
             <div className="flex justify-between items-center">
