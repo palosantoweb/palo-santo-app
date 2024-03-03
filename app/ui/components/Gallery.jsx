@@ -10,7 +10,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 
 const Gallery = () => {
-    const { data: session } = useSession()
+    const { data: session, status } = useSession()
     const [isModalOpen, setModalOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const {imageGallery, updateImagesGallery, removeImageGallery} = useImages();
@@ -21,7 +21,6 @@ const Gallery = () => {
         const getImages= async () =>{
             try{
             const galleryImages = await fetcher(`gallery`, {cache:"no-store"})
-            console.log("galleryImages", {galleryImages})
             const galleryFormatted = fixBase64Format(galleryImages)
             updateImagesGallery(galleryFormatted)
             setLoading(false)
@@ -69,7 +68,7 @@ const Gallery = () => {
             {imageGallery.length > 0 && imageGallery.map(({name, base64},index) => (
                 <div key={name} className="overflow-hidden rounded-lg shadow-md " onClick={() => openModal(index)}>
                     <Image src={base64} alt={name} width={250} height={250} style={{ objectFit: 'cover', layout: 'responsive', width: '250px', height: '250px' }} />
-                    {session && session.user.email && <button onClick={() => handleRemoveImage(name)} className="w-full py-2 bg-red-500 text-white font-semibold rounded-b-md"
+                    {status==='authenticated' && <button onClick={() => handleRemoveImage(name)} className="w-full py-2 bg-red-500 text-white font-semibold rounded-b-md"
               >
                 Eliminar imagen
               </button>}

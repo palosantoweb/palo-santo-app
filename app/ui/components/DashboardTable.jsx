@@ -9,12 +9,12 @@ import { fetcher } from "../../utils/fetcher";
 
 
 const DashboardTable = ({ clientData }) => {
-    const { data: session} = useSession()
+    const { data: session, status} = useSession()
     const [userData, setUserData] = useState();
 
     useEffect(() => {
         const fetchUser = async () => {
-            if (session) {
+            if (status==='authenticated') {
                 const userDataFetch = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
                 setUserData(userDataFetch)
             }
@@ -22,13 +22,13 @@ const DashboardTable = ({ clientData }) => {
         }
         fetchUser();
 
-    }, [])
+    }, [status])
 
 
 
     return (
         <>
-            {session && session.user.email ? (
+            {session && userData && session.user.email === userData.email ? (
                 <>
                     <div className="rounded-sm hidden md:block shadow">
                         <table className="text-sm rounded md:table">

@@ -10,7 +10,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 const imageCarrousel = []
 
 export const CarouselComponent = () => {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const [loading, setLoading] = useState(true)
   const { imageCarrousel, updateImagesCarrousel, removeImageCarrousel } = useImages();
 
@@ -56,7 +56,7 @@ export const CarouselComponent = () => {
         </Carousel>)
          :
         <></>}
-      { session && session.user.email && (
+      { status === 'authenticated'&& (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
           {imageCarrousel.length > 0 && imageCarrousel.map(({ name, base64 }) => (
             <div key={name} className="overflow-hidden rounded-lg shadow-md">

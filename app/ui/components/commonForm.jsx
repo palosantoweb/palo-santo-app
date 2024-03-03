@@ -6,7 +6,7 @@ import DatePickerCustom from "./DatePickerCustom";
 import { uploadClient } from "../../lib/actions";
 import { toast } from "react-toastify";
 
-const CommonForm = ({ formState, cleanFields = () => { }, setInfoForms = () => { }, responseDataCountries, mode = 'client', id}) => {
+const CommonForm = ({ formState, cleanFields = () => { }, setInfoForms = () => { }, responseDataCountries, mode = 'client', id, status}) => {
     const [selectedValue, setSelectedValue] = useState(null);
 
     return (
@@ -83,7 +83,7 @@ const CommonForm = ({ formState, cleanFields = () => { }, setInfoForms = () => {
             </div>
             }
             
-            <button type="submit" className="bg-[#CC8942] px-7 py-4 mt-7 text-white">Enviar</button>
+            <button type="submit" className="bg-[#CC8942] px-7 py-4 mt-7 text-white" disabled={mode==="create" && status==='unauthenticated' || mode==="modify" && status==='unauthenticated'}>Enviar</button>
             
         </form>);
 }

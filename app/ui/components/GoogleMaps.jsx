@@ -18,7 +18,7 @@ function Map() {
             
             const { Map } = await loader.importLibrary('maps')
 
-            const {Marker} = await loader.importLibrary('marker') 
+            const {AdvancedMarkerElement} = await loader.importLibrary('marker') 
 
             const position = {
                 lat: -41.1234478,
@@ -33,7 +33,7 @@ function Map() {
 
             const map = new Map(mapRef.current, mapOptions)
 
-            const marker = new Marker({
+            const marker = new AdvancedMarkerElement({
                 map: map,
                 position: position
             })

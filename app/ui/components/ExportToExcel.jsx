@@ -1,16 +1,17 @@
 'use client'
+import { useSession } from 'next-auth/react';
 import { fetcher } from '../../utils/fetcher';
 import * as XLSX from 'xlsx';
 
 
 const ExportToExcel = () => {
-    
-    const fetchingData = async() =>{
-        const resp = await fetcher('/client', {method: 'GET'})
+    const { status } = useSession();
+    const fetchingData = async () => {
+        const resp = await fetcher('/client', { method: 'GET' })
         return resp;
     }
 
-    const handleExportExcel = async() => {
+    const handleExportExcel = async () => {
         const dataCustomers = await fetchingData();
         const ws = XLSX.utils.json_to_sheet(dataCustomers.content);
         const wb = XLSX.utils.book_new();
@@ -28,12 +29,12 @@ const ExportToExcel = () => {
         downloadLink.click();
         document.body.removeChild(downloadLink);
     };
-    return (     <div className="flex justify-between items-center mb-2">
-                        <button className="border-2 border-[#CC8942] p-2 rounded" onClick={handleExportExcel}>
-                            Exportar Excel
-                        </button>
+    return (status === 'unathenticated' && (<div className="flex justify-between items-center mb-2">
+        <button className="border-2 border-[#CC8942] p-2 rounded" disabled={status === 'unauthenticated' || status === 'loading'} onClick={handleExportExcel}>
+            Exportar Excel
+        </button>
 
-                    </div> );
+    </div>));
 }
- 
+
 export default ExportToExcel;

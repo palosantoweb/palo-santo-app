@@ -11,7 +11,7 @@ const UploadImagesComponent = () => {
     const [imageFiles, setImageFiles] = useState([]);
     const [selectedOption, setSelectedOption] = useState("");
     const { updateImagesCarrousel, removeImageCarrousel, updateImagesGallery, removeImageGallery } = useImages();
-    const { data: session } = useSession()
+    const { data: session, status } = useSession()
 
 
     const handleImageUpload = async (e) => {
@@ -81,7 +81,7 @@ const UploadImagesComponent = () => {
 
 
     return (
-        session && (
+        status==='authenticated' && (
         <div className="container mx-auto my-8 flex flex-col items-center justify-center">
             <div className="flex flex-col justify-between items-center mb-4">
                 <span className="text-4xl font-semibold mb-6 text-[#CC8942]">
@@ -134,7 +134,7 @@ const UploadImagesComponent = () => {
                     </div>
                 ))}
             </div>
-            <button className="bg-[#CC8942] py-2 px-6 rounded-md cursor-pointer text-white hover:bg-[#AA713D] transition duration-300 ease-in-out mt-10" onClick={() => uploadImages()}>
+            <button className="bg-[#CC8942] py-2 px-6 rounded-md cursor-pointer text-white hover:bg-[#AA713D] transition duration-300 ease-in-out mt-10" disabled={status==='unauthenticated'} onClick={() => uploadImages()}>
                 Subir Imagenes
             </button>
         </div>

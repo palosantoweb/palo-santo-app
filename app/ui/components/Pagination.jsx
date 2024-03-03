@@ -1,7 +1,9 @@
 'use client'
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 const Pagination = ({ totalPages }) => {
+    const {session} = useSession();
     const pathname = usePathname()
     const searchParams = useSearchParams()
     const currentPage = Number(searchParams.get('page')) || 0
@@ -17,6 +19,7 @@ const Pagination = ({ totalPages }) => {
 
 
     return (
+        session === 'unathenticated' &&
         <div className="flex justify-center items-center mb-10">
             <Link
                 className={`border-2 border-[#CC8942] p-2 rounded ${currentPage === 0 ? 'cursor-not-allowed opacity-50 pointer-events-none' : ''}`}
