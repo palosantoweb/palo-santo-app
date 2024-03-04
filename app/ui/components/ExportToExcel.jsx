@@ -29,7 +29,7 @@ const ExportToExcel = () => {
         downloadLink.click();
         document.body.removeChild(downloadLink);
     };
-    return (status === 'unathenticated' && (<div className="flex justify-between items-center mb-2">
+    return (status === 'authenticated' && (<div className="flex justify-between items-center mb-2">
         <button className="border-2 border-[#CC8942] p-2 rounded" disabled={status === 'unauthenticated' || status === 'loading'} onClick={handleExportExcel}>
             Exportar Excel
         </button>

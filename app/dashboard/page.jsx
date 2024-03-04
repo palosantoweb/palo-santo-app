@@ -9,7 +9,7 @@ import Buttons from "../ui/components/Buttons";
 const Dashboard = async ({searchParams}) => {
     const query = searchParams.search || ''
     const currentPage = Number(searchParams.page) 
-    const clientData = await fetchedClients(query, currentPage, { cache:"no-store" })
+    const clientData = await fetchedClients(query, currentPage)
     const totalPages = clientData.totalPages
 
 
@@ -24,7 +24,7 @@ const Dashboard = async ({searchParams}) => {
                 <SearchBar />
             </div>
 
-            <DashboardTable clientData={clientData} />
+            <DashboardTable query={query} currentPage={currentPage}/>
             <Pagination totalPages={totalPages} currentPage={currentPage}/>
         </div>
         </div>

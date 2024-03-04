@@ -2,15 +2,18 @@
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useEffect, useState } from "react";
-import { fetcher } from "../../utils/fetcher";
+import { fetchedClients, fetcher } from "../../utils/fetcher";
+import { Spinner } from "keep-react";
 
 
 
 
 
-const DashboardTable = ({ clientData }) => {
+const DashboardTable = ({query, currentPage}) => {
     const { data: session, status} = useSession()
     const [userData, setUserData] = useState();
+    const [loading, setLoading] = useState(true);
+    const [clientData, setClientData] = useState();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -24,8 +27,24 @@ const DashboardTable = ({ clientData }) => {
 
     }, [status])
 
+    useEffect(()=>{
+        setLoading(true)
+            const clients = async ()=>{
+            const res = await fetchedClients(query, currentPage)
+            setClientData(res);
+            setLoading(false)
+            }
+
+            clients();
+
+    },[currentPage, query])
 
 
+    if(loading){
+        return <Spinner/>
+    }
+
+    console.log(clientData)
     return (
         <>
             {session && userData && session.user.email === userData.email ? (
