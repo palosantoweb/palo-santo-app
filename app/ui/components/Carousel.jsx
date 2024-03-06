@@ -1,7 +1,6 @@
 "use client";
 import { Carousel, Spinner } from "keep-react";
 import { fixBase64Format } from "../../utils/CorrectBase64";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fetcher } from "../../utils/fetcher";
 import { useImages } from "../../context/ImagesContext";
@@ -50,7 +49,7 @@ export const CarouselComponent = () => {
         <Carousel slideInterval={5000} showControls={true} indicators={true}>
           {imageCarrousel.map(({ name, base64 }) => (
             <div key={name}>
-              <Image src={base64} alt={name} layout="fill" style={{ objectFit: "cover" }} />
+              <img src={base64} alt={name} layout="fill" style={{ objectFit: "cover" }} />
             </div>
           ))}
         </Carousel>)
@@ -60,11 +59,9 @@ export const CarouselComponent = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
           {imageCarrousel.length > 0 && imageCarrousel.map(({ name, base64 }) => (
             <div key={name} className="overflow-hidden rounded-lg shadow-md">
-              <Image
+              <img
                 src={base64}
                 alt={name}
-                height={250}
-                width={250}
                 style={{ objectFit: 'cover', layout: 'responsive', width: '250px', height: '250px' }}
               />
               <button
