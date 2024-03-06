@@ -17,7 +17,7 @@ export const CarouselComponent = () => {
    useEffect(() => {
     const fetchData = async () => {
       try {
-        const carouselImages = await fetcher(`carrousel`);
+        const carouselImages = await fetcher(`carrousel`, {method: "GET"});
         const carouselImagesFormatted = await carouselImages.length > 0 ? fixBase64Format(carouselImages) : []
         updateImagesCarrousel(carouselImagesFormatted)
         setLoading(false)

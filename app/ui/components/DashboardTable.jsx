@@ -18,7 +18,7 @@ const DashboardTable = ({query, currentPage}) => {
     useEffect(() => {
         const fetchUser = async () => {
             if (status==='authenticated') {
-                const userDataFetch = await fetcher(`user/login/${session.user.email}`, { method: 'GET' })
+                const userDataFetch = await fetcher(`user/login/${session.user.email}`, {method: "GET"})
                 setUserData(userDataFetch)
             }
 

@@ -1,4 +1,3 @@
-import axios from "axios";
 
 const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_BASE_URL : process.env.NEXT_PUBLIC_BASE_URL_DEV
 
@@ -9,47 +8,28 @@ export const fetcher = async (url, options) => {
         let method = options ? options.method : "GET"
         switch (method) {
             case "GET": {
-                res = await axios.get(`${BASE_URL}${url}`, {headers: {
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache',
-                    'Expires': '0',
-                  },});
+                res = await fetch(`${BASE_URL}${url}`,{method: options.method, cache: "no-store"});
                 break;
             }
-            case "POST": {
-                res = await axios.post(`${BASE_URL}${url}`, options?.body, {headers: {
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache',
-                    'Expires': '0',
-                  },});
+           case "POST": {
+                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, cache: 'no-store'});
                 break;
             }
             case "PUT": {
-                res = await axios.put(`${BASE_URL}${url}`, options?.body, {headers: {
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache',
-                    'Expires': '0',
-                  },});
+                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, cache: 'no-store'});
                 break;
             }
             case "DELETE": {
-                res = await axios.delete(`${BASE_URL}${url}`, {headers: {
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache',
-                    'Expires': '0',
-                  },});
+                res = await fetch(`${BASE_URL}${url}`,{method: options.method, cache: 'no-store'});
                 break;
             }
             default: {
-                res = await axios.get(`${BASE_URL}${url}`, {headers: {
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache',
-                    'Expires': '0',
-                  },});
+                res = await fetch(`${BASE_URL}${url}`, {method: options.method, cache: 'no-store'});
                 break;
             }
         }
-        return res.data
+        let response = await res.json();
+        return response;
     } catch (error) {
         throw new Error(`Error en la solicitud: ${error.message}`);
     }

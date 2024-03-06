@@ -19,7 +19,7 @@ const UploadClient = ({ responseDataCountries, mode, id }) => {
             return new Promise(async (resolve, reject) => {
                 try {
                     if (mode === 'modify') {
-                        const clientData = await fetcher(`client/${id}`);
+                        const clientData = await fetcher(`client/${id}`, {method: "GET"});
                         setResponseData(clientData)
     
                         resolve(clientData);
