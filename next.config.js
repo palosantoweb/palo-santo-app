@@ -17,7 +17,16 @@ module.exports = {
       allowedOrigins: ["palosantoapartments.com.ar", "127.0.0.1:3000"]
     }
   },
-  images: {
-    minimumCacheTTL: 60,
+  async headers() {
+    return [
+      {
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store',
+          },
+        ],
+      },
+    ]
   },
 };
