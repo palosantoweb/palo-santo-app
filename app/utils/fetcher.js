@@ -8,23 +8,23 @@ export const fetcher = async (url, options) => {
         let method = options ? options.method : "GET"
         switch (method) {
             case "GET": {
-                res = await fetch(`${BASE_URL}${url}`,{method: options.method, cache: "no-store"});
+                res = await fetch(`${BASE_URL}${url}`,{method: options.method, next: {revalidate: 10}});
                 break;
             }
            case "POST": {
-                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, cache: 'no-store'});
+                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, next: {revalidate: 10}});
                 break;
             }
             case "PUT": {
-                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, cache: 'no-store'});
+                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, next: {revalidate: 10}});
                 break;
             }
             case "DELETE": {
-                res = await fetch(`${BASE_URL}${url}`,{method: options.method, cache: 'no-store'});
+                res = await fetch(`${BASE_URL}${url}`,{method: options.method});
                 break;
             }
             default: {
-                res = await fetch(`${BASE_URL}${url}`, {method: options.method, cache: 'no-store'});
+                res = await fetch(`${BASE_URL}${url}`, {method: options.method, next: {revalidate: 10}});
                 break;
             }
         }
