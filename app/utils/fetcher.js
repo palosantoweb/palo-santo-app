@@ -8,15 +8,15 @@ export const fetcher = async (url, options) => {
         let method = options ? options.method : "GET"
         switch (method) {
             case "GET": {
-                res = await fetch(`${BASE_URL}${url}`,{method: options.method, next: {revalidate: 10}});
+                res = await fetch(`${BASE_URL}${url}`,{method: options.method, next: {revalidate: 0}});
                 break;
             }
            case "POST": {
-                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, next: {revalidate: 10}});
+                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, next: {revalidate: 0}});
                 break;
             }
             case "PUT": {
-                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, next: {revalidate: 10}});
+                res = await fetch(`${BASE_URL}${url}`, {body:options?.body, method: options.method, next: {revalidate: 0}});
                 break;
             }
             case "DELETE": {
@@ -24,7 +24,7 @@ export const fetcher = async (url, options) => {
                 break;
             }
             default: {
-                res = await fetch(`${BASE_URL}${url}`, {method: options.method, next: {revalidate: 10}});
+                res = await fetch(`${BASE_URL}${url}`, {method: options.method, next: {revalidate: 0}});
                 break;
             }
         }
