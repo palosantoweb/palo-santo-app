@@ -15,19 +15,7 @@ module.exports = {
   experimental: {
     serverActions: {
       allowedOrigins: ["palosantoapartments.com.ar", "127.0.0.1:3000"]
-    }
-  },
-  async headers() {
-    return [
-      {
-        headers: [
-          {
-            source: "https//palosantoapartments.com.ar",
-            key: 'Cache-Control',
-            value: 'no-store',
-          },
-        ],
-      },
-    ]
+    },
+    isrMemoryCacheSize: 0
   },
 };
