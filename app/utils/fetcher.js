@@ -9,23 +9,43 @@ export const fetcher = async (url, options) => {
         let method = options ? options.method : "GET"
         switch (method) {
             case "GET": {
-                res = await axios.get(`${BASE_URL}${url}`, { headers: options?.headers });
+                res = await axios.get(`${BASE_URL}${url}`, {headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
+                  },});
                 break;
             }
             case "POST": {
-                res = await axios.post(`${BASE_URL}${url}`, options?.body, { headers: options?.headers });
+                res = await axios.post(`${BASE_URL}${url}`, options?.body, {headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
+                  },});
                 break;
             }
             case "PUT": {
-                res = await axios.put(`${BASE_URL}${url}`, options?.body, { headers: options?.headers });
+                res = await axios.put(`${BASE_URL}${url}`, options?.body, {headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
+                  },});
                 break;
             }
             case "DELETE": {
-                res = await axios.delete(`${BASE_URL}${url}`, { headers: options?.headers });
+                res = await axios.delete(`${BASE_URL}${url}`, {headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
+                  },});
                 break;
             }
             default: {
-                res = await axios.get(`${BASE_URL}${url}`);
+                res = await axios.get(`${BASE_URL}${url}`, {headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
+                  },});
                 break;
             }
         }
