@@ -17,4 +17,6 @@ module.exports = {
       allowedOrigins: ["palosantoapartments.com.ar", "127.0.0.1:3000"]
     }
   },
+  cacheHandler: require.resolve('./cache-handler.js'),
+  cacheMaxMemorySize: 0,
 };
