@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { fetcher } from "../../utils/fetcher";
 import { useImages } from "../../context/ImagesContext";
 import { useSession, signIn, signOut } from "next-auth/react"
-import { revalidatePath } from "next/cache";
 
 const imageCarrousel = []
 
@@ -32,7 +31,6 @@ export const CarouselComponent = () => {
 
 
   const handleRemoveImage = async (name) => {
-    revalidatePath('/')
     try {
       await fetcher(`carrousel/${name}`, {
         method: 'DELETE'
