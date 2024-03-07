@@ -5,6 +5,7 @@ import { fetcher } from "../../utils/fetcher";
 import Image from "next/image";
 import { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
+import { revalidatePath } from "next/cache";
 
 
 const UploadImagesComponent = () => {
@@ -54,7 +55,6 @@ const UploadImagesComponent = () => {
     };
 
     const uploadImages = () => {
-
         if(selectedOption !== ''){
         const sendData = async () => {
             const response = await fetcher(`${selectedOption === 'gallery' ? 'gallery' : 'carrousel'}/upload`, {

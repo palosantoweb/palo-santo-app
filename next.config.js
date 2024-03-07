@@ -15,7 +15,7 @@ module.exports = {
   experimental: {
     serverActions: {
       allowedOrigins: ["palosantoapartments.com.ar", "127.0.0.1:3000"]
-    },
-    isrMemoryCacheSize: 0
+    }
   },
+  cacheMaxMemorySize: 0,
 };
