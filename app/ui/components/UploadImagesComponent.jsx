@@ -55,8 +55,6 @@ const UploadImagesComponent = () => {
     };
 
     const uploadImages = () => {
-        revalidatePath('/')
-
         if(selectedOption !== ''){
         const sendData = async () => {
             const response = await fetcher(`${selectedOption === 'gallery' ? 'gallery' : 'carrousel'}/upload`, {
