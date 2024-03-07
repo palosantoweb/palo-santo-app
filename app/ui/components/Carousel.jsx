@@ -32,8 +32,8 @@ export const CarouselComponent = () => {
 
 
   const handleRemoveImage = async (name) => {
+    revalidatePath('/')
     try {
-      revalidatePath('/')
       await fetcher(`carrousel/${name}`, {
         method: 'DELETE'
       });
