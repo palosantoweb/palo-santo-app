@@ -4,6 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { useEffect, useState } from "react";
 import { fetchedClients, fetcher } from "../../utils/fetcher";
 import { Spinner } from "keep-react";
+import Pagination from "./Pagination";
 
 
 
@@ -13,6 +14,7 @@ const DashboardTable = ({query, currentPage}) => {
     const { data: session, status} = useSession()
     const [userData, setUserData] = useState();
     const [loading, setLoading] = useState(true);
+    const [totalPages, setTotalPages] = useState();
     const [clientData, setClientData] = useState();
 
     useEffect(() => {
@@ -32,6 +34,7 @@ const DashboardTable = ({query, currentPage}) => {
             const clients = async ()=>{
             const res = await fetchedClients(query, currentPage)
             setClientData(res);
+            setTotalPages(res.totalPages);
             setLoading(false)
             }
 
@@ -111,6 +114,7 @@ const DashboardTable = ({query, currentPage}) => {
                         }
                     </div>
                     <div className="flex justify-center mt-14"></div>
+                    <Pagination totalPages={totalPages} currentPage={currentPage}/>
                 </>
             ) : (
                 <div>No tenés permitido el ingreso a esta sección!</div>
