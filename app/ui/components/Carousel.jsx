@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { fetcher } from "../../utils/fetcher";
 import { useImages } from "../../context/ImagesContext";
 import { useSession, signIn, signOut } from "next-auth/react"
+import { revalidatePath } from "next/cache";
 
 const imageCarrousel = []
 
@@ -16,6 +17,7 @@ export const CarouselComponent = () => {
    useEffect(() => {
     const fetchData = async () => {
       try {
+        revalidatePath('/')
         const carouselImages = await fetcher(`carrousel`, {method: "GET"});
         const carouselImagesFormatted = await carouselImages.length > 0 ? fixBase64Format(carouselImages) : []
         updateImagesCarrousel(carouselImagesFormatted)
@@ -32,6 +34,7 @@ export const CarouselComponent = () => {
 
   const handleRemoveImage = async (name) => {
     try {
+      revalidatePath('/')
       await fetcher(`carrousel/${name}`, {
         method: 'DELETE'
       });
