@@ -5,6 +5,8 @@ import { fetcher } from "../../utils/fetcher";
 import { Spinner } from "keep-react";
 import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
+import { revalidatePath } from "next/cache";
+import Image from "next/image";
 
 
 
@@ -49,6 +51,7 @@ const Gallery = () => {
     };
 
     const handleRemoveImage = async (name) => {
+        revalidatePath('/')
         try {
            await fetcher(`gallery/${name}`, {
             method: 'DELETE'
@@ -66,7 +69,7 @@ const Gallery = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
             {imageGallery.length > 0 && imageGallery.map(({name, base64},index) => (
                 <div key={name} className="overflow-hidden rounded-lg shadow-md " onClick={() => openModal(index)}>
-                    <img src={base64} alt={name} style={{ objectFit: 'cover', layout: 'responsive', width: '250px', height: '250px' }} />
+                    <Image src={base64} alt={name} width={250} height={250} style={{ objectFit: 'cover', layout: 'responsive', width: '250px', height: '250px' }} />
                     {status==='authenticated' && <button onClick={() => handleRemoveImage(name)} className="w-full py-2 bg-red-500 text-white font-semibold rounded-b-md"
               >
                 Eliminar imagen
@@ -80,7 +83,7 @@ const Gallery = () => {
                 <button className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white" onClick={prevImage}>&lt;</button>
                 <button className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white" onClick={nextImage}>&gt;</button>
                 <div className="h-screen flex items-center justify-center">
-                    <img src={imageGallery[currentImageIndex].base64} style={{width: "1000px", height:"500px"}} alt={imageGallery[currentImageIndex].name} />
+                    <Image src={imageGallery[currentImageIndex].base64} width={800} height={300} alt={imageGallery[currentImageIndex].name} />
                 </div>
             </div>
         )}

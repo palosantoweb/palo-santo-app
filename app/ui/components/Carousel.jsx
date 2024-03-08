@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { fetcher } from "../../utils/fetcher";
 import { useImages } from "../../context/ImagesContext";
 import { useSession, signIn, signOut } from "next-auth/react"
+import Image from "next/image";
 
 const imageCarrousel = []
 
@@ -49,7 +50,7 @@ export const CarouselComponent = () => {
         <Carousel slideInterval={5000} showControls={true} indicators={true}>
           {imageCarrousel.map(({ name, base64 }) => (
             <div key={name}>
-              <img src={base64} alt={name} layout="fill" style={{ objectFit: "cover" }} />
+              <Image src={base64} alt={name} layout="fill" style={{ objectFit: "cover" }} />
             </div>
           ))}
         </Carousel>)
@@ -59,7 +60,7 @@ export const CarouselComponent = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
           {imageCarrousel.length > 0 && imageCarrousel.map(({ name, base64 }) => (
             <div key={name} className="overflow-hidden rounded-lg shadow-md">
-              <img
+              <Image
                 src={base64}
                 alt={name}
                 style={{ objectFit: 'cover', layout: 'responsive', width: '250px', height: '250px' }}
