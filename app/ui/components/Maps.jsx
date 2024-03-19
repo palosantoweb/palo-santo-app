@@ -1,8 +1,17 @@
-'use client'
-const { default: Map } = require("./GoogleMaps")
+import dynamic from "next/dynamic"
+import { useMemo } from "react"
+
 
 const Maps = () => {
-    return ( <><Map /></> );
-}
- 
-export default Maps;
+    const Map = useMemo(() => dynamic(
+        () => import('./Map'),
+        { 
+          loading: () => <p>A map is loading</p>,
+          ssr: false
+        }
+      ), [])
+    
+      return <Map />
+
+  }
+  export default Maps

@@ -17,7 +17,7 @@ export const CarouselComponent = () => {
    useEffect(() => {
     const fetchData = async () => {
       try {
-        const carouselImages = await fetcher(`carrousel`, {method: "GET"});
+        const carouselImages = await fetcher(`carrousel`, {method: "GET", cache:'no-store'});
         const carouselImagesFormatted = await carouselImages.length > 0 ? fixBase64Format(carouselImages) : []
         updateImagesCarrousel(carouselImagesFormatted)
         setLoading(false)
@@ -63,6 +63,8 @@ export const CarouselComponent = () => {
               <Image
                 src={base64}
                 alt={name}
+                width={250}
+                height={250}
                 style={{ objectFit: 'cover', layout: 'responsive', width: '250px', height: '250px' }}
               />
               <button

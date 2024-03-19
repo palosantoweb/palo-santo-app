@@ -9,7 +9,13 @@ export const ImagesProvider = ({ children }) => {
 
 
     const updateImagesCarrousel = (newImages) => {
-        setImageCarrousel(newImages)
+        console.log(newImages)
+        if(imageCarrousel.length > 0){
+            setImageCarrousel(prevImages => [...prevImages, ...newImages])
+        }
+            else{
+                setImageCarrousel(newImages)
+            }        
     };
 
     const removeImageCarrousel = (imageName) => {
@@ -17,7 +23,13 @@ export const ImagesProvider = ({ children }) => {
     };
 
     const updateImagesGallery = (newImages) => {
-        setImageGallery(newImages)
+        if(imageGallery.length > 0){
+        setImageGallery(prevImages => [...prevImages, ...newImages])
+    }
+        else{
+            setImageGallery(newImages)
+        }
+
     };
 
     const removeImageGallery = (imageName) => {
@@ -25,7 +37,7 @@ export const ImagesProvider = ({ children }) => {
     };
 
     return (
-        <ImagesContext.Provider value={{ imageCarrousel, updateImagesCarrousel, removeImageCarrousel, imageGallery, updateImagesGallery, removeImageGallery }}>
+        <ImagesContext.Provider value={{ imageCarrousel, setImageCarrousel, updateImagesCarrousel, removeImageCarrousel, imageGallery, setImageGallery, updateImagesGallery, removeImageGallery }}>
             {children}
         </ImagesContext.Provider>
     );

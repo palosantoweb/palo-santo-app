@@ -51,7 +51,6 @@ const Gallery = () => {
     };
 
     const handleRemoveImage = async (name) => {
-        revalidatePath('/')
         try {
            await fetcher(`gallery/${name}`, {
             method: 'DELETE'

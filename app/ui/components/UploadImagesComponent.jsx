@@ -3,7 +3,7 @@
 import { useImages } from "../../context/ImagesContext";
 import { fetcher } from "../../utils/fetcher";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { revalidatePath } from "next/cache";
 
@@ -113,6 +113,7 @@ const UploadImagesComponent = () => {
                     <label>
                         {imageFiles.length} imagenes seleccionadas
                     </label>
+                    <p className="italic text-gray-300">Por vez no se deben subir más de 9 imagenes de no más de 800kb</p>
                 </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
