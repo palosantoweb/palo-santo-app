@@ -40,7 +40,7 @@ const Contacto = async () => {
                 Al Cerro Catedral: 1,5 km al Cruce, 12,5 km totales.
               </li>
               <li className='mt-6 mb-3'>Al Teleférico Cerro Otto: 2 km.</li>
-              <li className='mt-6 mb-3'>Al Aeropuerto: 17 km</li>
+              <li className='mt-6 mb-6'>Al Aeropuerto: 17 km</li>
             </ul>
             <p className='md:mr-6 md:ml-16 italic font-semibold'>
               Si sientes que falta algo o necesitas asistencia, contáctanos.
