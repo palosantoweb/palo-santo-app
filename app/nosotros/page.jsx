@@ -9,7 +9,7 @@ const Nosotros = () => {
     <>
       <div className='min-h-screen w-full flex flex-col items-center mb-6'>
         <h1 className='md:px-8 py-2 text-2xl text-[#CC8942] md:text-6xl text-center italic font-bold mb-4'>
-          Descubre Nuestro Rincón de Ensueño en la Majestuosa Patagonia
+          Descubre nuestro Rincón de ensueño en la Patagonia
         </h1>
         <hr className='border-1 border-gray-300 w-full mr-[40%]' />
         <div className='mt-10 md:text-2xl px-8 md:px-32 text-justify italic font-semibold text-gray-500 mb-7'>
@@ -22,10 +22,11 @@ const Nosotros = () => {
         <div className='px-10 md:text-2xl flex items-center justify-between text-justify flex-col md:flex-row text-gray-500 mb-6'>
           <div className='flex-1 '>
             <p className='md:mr-6 md:ml-16 mb-6'>
-              Imagina despertar cada mañana rodeado de imponentes bosques, con
-              el sonido suave de los lagos y el aire fresco de la montaña
-              acariciando tu rostro. Este es nuestro sueño hecho realidad, y
-              ahora queremos que sea también el tuyo.
+              Imagina despertar por el canto de los pájaros en un sitio rodeado
+              de árboles, bajar con tu café a disfrutar del sol, los colores y
+              aromas de nuestro jardín nativo. Este sitio nace como nuestro
+              sueño familiar en la Patagonia, te invitamos a hacerlo realidad en
+              compañía de tu gente.
             </p>
           </div>
           <div className='flex-1'>
@@ -36,13 +37,14 @@ const Nosotros = () => {
           <hr className='border-1 border-gray-300 w-full mt-3 mb-12' />
         </div>
         <div className='px-10 md:ml-16 text-justify md:text-2xl flex items-center justify-between flex-col md:flex-row text-gray-500 mb-6'>
-          <Image src={Trekking} alt='foto dos' width={500} height={300}/>
+          <Image src={Trekking} alt='foto dos' width={500} height={300} />
           <p className='md:ml-6 mt-3 md:mr-48'>
             En nuestro complejo, diseñado y construido con amor por apasionados
             arquitectos e ingenieros, encontrarás tu refugio perfecto. Hemos
             cuidado cada detalle para que tu estancia sea inolvidable,
             ofreciéndote un equilibrio entre la comodidad moderna y la conexión
-            con la naturaleza.
+            con la naturaleza. Siempre podrás leer o meditar apaciblemente en
+            estos inspiradores contextos naturales.
           </p>
         </div>
         <div className='w-full flex flex-col items-center mb-6'>
@@ -67,9 +69,9 @@ const Nosotros = () => {
             <div className='px-10 text-justify md:text-2xl flex items-center justify-between flex-col md:flex-row text-gray-500 mb-6'>
               <Image src={house} alt='foto dos' width={500} height={300} />
               <p className='md:ml-6 mt-3 md:mr-48'>
-                Nos enorgullece haber diseñado este espacio pensando en ti y en
-                tus pasiones. Queremos que disfrutes al máximo de todas las
-                maravillas que la Patagonia tiene para ofrecer.
+                Nos enorgullece haber diseñado este espacio pensando en ti.
+                Queremos que puedas disfrutar al máximo de todas las maravillas
+                que la Patagonia tiene para ofrecer.
               </p>
             </div>
             <div className='mt-10 md:text-2xl px-10 text-justify italic font-semibold text-gray-500'>
