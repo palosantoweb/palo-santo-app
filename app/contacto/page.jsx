@@ -30,7 +30,7 @@ const Contacto = async () => {
         <div className='mt-10 md:px-16 px-10 md:text-2xl flex items-center justify-between text-justify flex-col text-gray-500 mb-6'>
           <div className='flex-1 mb-10'>
             <p>Principales distancias desde Palo Santo Apartments:</p>
-            <ul className='list-disc md:ml-16'>
+            <ul className='list-disc md:ml-16 mb-6'>
               <li className='mt-6 mb-3'>A bajada a Playa Bonita: 200 m.</li>
               <li className='mt-6 mb-3'>
                 A comercios varios, cervecerías, parada de colectivos: 200 m.
