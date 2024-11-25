@@ -38,6 +38,10 @@ const Servicios = () => {
               <li className='mb-3'>Amenities</li>
               <li className='mb-3'>Estacionamiento</li>
               <li className='mb-3'>Blanquería</li>
+              <li className='mb-3'>
+                Contamos con un lugar apropiado y seguro para que puedas hacer
+                tu asado animal o vegetal
+              </li>
             </ul>
           </div>
           <Gallery />
