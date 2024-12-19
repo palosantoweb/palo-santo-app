@@ -6,7 +6,7 @@ const Maps = () => {
     const Map = useMemo(() => dynamic(
         () => import('./Map'),
         { 
-          loading: () => <p>A map is loading</p>,
+          loading: () => <p>Cargando mapa...</p>,
           ssr: false
         }
       ), [])
