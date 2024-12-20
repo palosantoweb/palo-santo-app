@@ -14,6 +14,8 @@ const Container = ({ children }) => {
   const [bottomPosition, setBottomPosition] = useState("bottom-4");
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
       const footer = document.querySelector("footer");
       if (!footer) return;

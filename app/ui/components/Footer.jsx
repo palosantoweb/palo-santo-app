@@ -22,7 +22,7 @@ const Footer = () => {
     },
     {
       route: "contacto",
-      label: "Contacto",
+      label: "Contacto/Ubicación",
     },
   ];
 

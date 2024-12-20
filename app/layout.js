@@ -1,15 +1,27 @@
 import "./globals.css";
-import Container from "./ui/components/Container";
 import localFont from "next/font/local";
 import { FormProvider } from "./context/FormContext";
 import { ToastContainer } from "react-toastify";
 import { ImagesProvider } from "./context/ImagesContext";
 import SessionWrapper from "./ui/components/SesssionWrapper";
-import { WhatsApp } from "./icons/WhatsApp";
+import dynamic from "next/dynamic";
+import Head from "next/head";
+
+const DynamicContainerWithNoSSR = dynamic(
+  () => import("../app/ui/components/Container"),
+  { ssr: false }
+);
 
 export const metadata = {
   title: "Palo Santo Web",
   description: "Palo Santo Appartments",
+  icons: {
+    icon: [
+      {
+        url: "/icon.ico",
+      },
+    ],
+  },
 };
 
 const bozon = localFont({
@@ -113,7 +125,7 @@ export default function RootLayout({ children }) {
                 pauseOnHover
                 theme="light"
               />
-              <Container>{children}</Container>
+              <DynamicContainerWithNoSSR>{children}</DynamicContainerWithNoSSR>
             </body>
           </ImagesProvider>
         </FormProvider>
